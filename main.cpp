@@ -1,8 +1,9 @@
 #include <iostream>//<- para imprimir a la consola . 
 #include <vector>//<- para crear el arreglo 
 #include <random>//<- para general valores aliatorios 
-#include <time.h>//
-using std::cout;
+#include <time.h>//< - para crear una semilla aliatorias para srand,
+
+using std::cout;//<- para no tener que poner std::cout<<"lo que sea"
 using std::cin;
 
 // esta funcion es para detener el programa
@@ -13,35 +14,132 @@ void Stop()
 	cin.get();
 }
 
+void SelectionSort(std::vector<int> &Arreglo) {
+	// el Selection Sort busca el elemento mas 
+	// Chico y lo pone al inicio del arreglo
+	// en la primero iteracion luego el lugar a 
+	// Remplasar es el espacio adelante del 
+	//primer espacio
+
+	/*Ejemplo  
+	[9][6][4][7]
+	 ^
+	el 4 y 9 Cambian de lugar
+	 [4][6][9][7]
+	     ^
+	se queda igual 
+
+	[4][6][9][7]
+	        ^ 
+	el 9 y 7 cambian de lugar 
+
+	[4][6][7][9]
+
+	se Termino . 
+	*/
+
+	// tengo este valor(ElementoACambiar) porque voy a ramplazar
+	// este con "ElementoMasChico" y para hacer
+	// el seleccion sort voy a tener que intercambiar 
+	// estos dos valore de lugar por lo tanto necesito una copia .
+
+	int ElementoACambiar = 0;
+
+	// Este valor me dice cual elemento del la seccion no
+	//sortiada del Arreglo es el mas Chico .
+	int ElementoMasChico = 0;
+
+	// Este valor me dice la posicion del "ElementoMasChico"
+	// dentro del Arreglo 
+	int IndiceDelElementoMasChico = 0;
+
+	// este valor indica a donde ira 
+	// el "ElementoMasChico" dentro del 
+	// Arreglo Arreglo 
+	int IndiceParaElementoMasChico = 0;
+
+	
+
+	
+
+	for (int i = 0; i < Arreglo.size(); ++i)
+	{
+		// Asigno la variable "ElementoMasChico" al 
+		// primer valor del arreglo en el espacio 'i'
+		// porque como inicialize la variable "ElementoMasChico"
+		// como 0 solo valores menor al 0 se podian asignar 
+		// despues y no puedo garantizar que siquiera exista elemento
+		// menores que zero . 
+		ElementoMasChico = Arreglo[i];
+		
+		// reposiciono el Indice ( si no ago esto todo el arreglo el sort
+		// haveces pone valores en lugares arbirtrarios 
+		IndiceDelElementoMasChico = i;
+
+		// esto es para tener la copia del valor que ahi antes
+		// para usarlo despues 
+		ElementoACambiar = Arreglo[IndiceParaElementoMasChico];
+		
+		// le asigno j a =IndiceParaElementoMasChico porque SelectionSort
+		// no Require que vea todo el arreglo cada ciclo. 
+		for (int j = IndiceParaElementoMasChico; j < Arreglo.size(); ++j)
+		{
+			//Ago la comparacion para ver cual es el elemento mas Chico
+			// de la parte no Organizada .
+			if (ElementoMasChico > Arreglo[j]) {
+				ElementoMasChico = Arreglo[j];
+				IndiceDelElementoMasChico = j;
+			}
+		}
+
+		//asigno el Valor mas Chico al lugar donde deberia esta en el arreglo 
+		Arreglo[IndiceParaElementoMasChico] = Arreglo[IndiceDelElementoMasChico];
+
+		// este if es para que no cambie un valor que necesita cambiar
+		// si el ElementoMasChico esta en el inicio no veo razon para 
+		// cambiarlo .
+		if (!(IndiceParaElementoMasChico == IndiceDelElementoMasChico)) {
+		Arreglo[IndiceDelElementoMasChico] = ElementoACambiar;
+
+		}
+		
+		// cuando todos los demas pasos se cumplan
+		// no tender que ver todo el arreglo de nuevo
+		// por esa razon avanso un espacio .
+		IndiceParaElementoMasChico++;
+
+	}
+
+}
+
 void BorbujaSort(std::vector<int> &Arreglo) {
-	int IndiceMinimo = 0;
-	int IndiceMaximo = Arreglo.size()-1;
-	int IndicePrevioDelValorMasGrande = 0;
-	int ValorMasGrande = 0;
+	
 	int Temporarl = 0;
+
+	// todo lo que hace este algorimo en es
+	// checa todo el arreglo Compararndo
+	// cada elemento individual y moviendo
+	// el mas grande hasta el frente del Arreglo 
 
 	for (int i = 0; i < Arreglo.size(); ++i) {
 
-		for (int j = 0; j < IndiceMaximo ; ++j) {
+		for (int j = 0; j < Arreglo.size() - 1; ++j) {
 
 			
 			if (Arreglo[j] > Arreglo[j + 1])
 			{
-				//ValorMasGrande = Arreglo[j];
 				Temporarl = Arreglo[j + 1];
 				Arreglo[j + 1] = Arreglo[j];
 				Arreglo[j] = Temporarl;
-
-
-
 			}
 
 		}
 
-		//--IndiceMaximo;
 	}
 
 }
+
+
 
 
 void ArregloAlitorio() {
@@ -50,6 +148,7 @@ void ArregloAlitorio() {
 
 	cout << "ingresa un numero porfavor :) \n";
 	cin >> usuarioValor;
+	std::cout << "Antes \n";
 
 	for (int i = 0; i < usuarioValor; ++i)
 	{
@@ -58,11 +157,11 @@ void ArregloAlitorio() {
 	}
 
 	for (int valor : ValoresAlitorios) {
-		cout <<'['<< valor << "] ";
+		cout << valor << ", ";
 	}
 
-	BorbujaSort(ValoresAlitorios);
-	std::cout << "------------\n";
+	SelectionSort(ValoresAlitorios);
+	std::cout << "\n-------------Despues---------------\n";
 	for (int valor : ValoresAlitorios) {
 		cout << '[' << valor << "] ";
 	}
