@@ -14,6 +14,9 @@ void Stop()
 	cin.get();
 }
 
+
+
+
 void SelectionSort(std::vector<int> &Arreglo) {
 	// el Selection Sort busca el elemento mas 
 	// Chico y lo pone al inicio del arreglo
@@ -32,6 +35,7 @@ void SelectionSort(std::vector<int> &Arreglo) {
 	[4][6][9][7]
 	        ^ 
 	el 9 y 7 cambian de lugar 
+
 
 	[4][6][7][9]
 
@@ -58,9 +62,6 @@ void SelectionSort(std::vector<int> &Arreglo) {
 	// Arreglo Arreglo 
 	int IndiceParaElementoMasChico = 0;
 
-	
-
-	
 
 	for (int i = 0; i < Arreglo.size(); ++i)
 	{
@@ -116,29 +117,82 @@ void BorbujaSort(std::vector<int> &Arreglo) {
 	
 	int Temporarl = 0;
 
+	// uso este boliano para ver si
+	// el arreglo ya esta sortiado.
+	bool Sorted = false;
+
 	// todo lo que hace este algorimo en es
 	// checa todo el arreglo Compararndo
 	// cada elemento individual y moviendo
 	// el mas grande hasta el frente del Arreglo 
 
 	for (int i = 0; i < Arreglo.size(); ++i) {
+		Sorted = true;
 
-		for (int j = 0; j < Arreglo.size() - 1; ++j) {
+		for (int j = 0; j < Arreglo.size() - 1 - i; ++j) {
 
-			
 			if (Arreglo[j] > Arreglo[j + 1])
 			{
 				Temporarl = Arreglo[j + 1];
 				Arreglo[j + 1] = Arreglo[j];
 				Arreglo[j] = Temporarl;
+				Sorted = false;
 			}
+
+		}
+
+		if (Sorted == true){
+
+			break;
+		}
+	}
+
+}
+
+void quickSort(std::vector<int> &Arreglo)
+{
+
+	int Pivote = 0;
+
+	int IndiceL = 0;
+	int IndiceR = 0;
+
+	int ValorEnR = 0;
+	int ValorEnL = 0;
+
+
+	(Arreglo.size() % 2 == 1) ? Pivote = (Arreglo.size() / 2) + 1 : Pivote = (Arreglo.size() / 2);
+
+	IndiceR = Arreglo.size() - 1;
+	while (IndiceL >= Pivote || IndiceR > Pivote )
+	{
+		if (Arreglo[IndiceL] > Arreglo[Pivote]) {
+			// lo que hace este codigo en intercabiar dos elementos .
+			ValorEnL = Arreglo[IndiceL];
+			Arreglo[IndiceL] = Arreglo[IndiceR];
+			Arreglo[IndiceR] = ValorEnL;
+		}
+		++IndiceL;
+		if(Arreglo[IndiceR] < Arreglo[Pivote])
+		{
+			ValorEnR = Arreglo[IndiceR];
+			Arreglo[IndiceR] = Arreglo[IndiceL];
+			Arreglo[IndiceL] = ValorEnR;
+		
+		}
+		--IndiceR;
+
+		if (IndiceR == IndiceL) {
+			ValorEnL = Pivote;
+			Pivote = IndiceL;
+			IndiceL = ValorEnL;
 
 		}
 
 	}
 
-}
 
+}
 
 
 
@@ -150,9 +204,11 @@ void ArregloAlitorio() {
 	cin >> usuarioValor;
 	std::cout << "Antes \n";
 
-	for (int i = 0; i < usuarioValor; ++i)
+	ValoresAlitorios.resize(usuarioValor);
+
+	for (int i = 0; i < usuarioValor ; ++i)
 	{
-		ValoresAlitorios.push_back(rand());
+		ValoresAlitorios[i] = rand();
 
 	}
 
@@ -160,7 +216,7 @@ void ArregloAlitorio() {
 		cout << valor << ", ";
 	}
 
-	SelectionSort(ValoresAlitorios);
+	quickSort(ValoresAlitorios);
 	std::cout << "\n-------------Despues---------------\n";
 	for (int valor : ValoresAlitorios) {
 		cout << '[' << valor << "] ";
@@ -169,9 +225,6 @@ void ArregloAlitorio() {
 	Stop();
 
 }
-
-
-
 
 int main() {
 	// uso la funcion time(0) para que me de 
