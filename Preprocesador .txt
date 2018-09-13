@@ -1,0 +1,35 @@
+#ifdef
+// si condicion x es verdad va a compilar el codigo 
+// que esta entre "#ifndef" y "endif"
+
+
+#ifndef 
+// te permite tener multiples condiciones ?
+
+#endif 
+// es el final del rango de lo que se va a declarar en un 
+// #ifndef 
+#define
+// esto sirve para darle otro nombre a una variable 
+// ejemplo 
+
+#define T_P std::chrono::high_resolution_clock::time_point();
+
+#error
+//sirve para indicar errores ???(no tiengo idea ) 
+
+#elif
+// Esto es un else if (solo digo esto por que me acrode de python )
+
+#if
+// es como un if normal pero preprocesado 
+
+#else 
+// es como un else normal pero preprocesado 
+
+#import 
+// asumire que e similar a #include pero tiene algunas propiedades 
+// que lo hacen diferente .
+
+#undef 
+// para dejar de compilar codigo que antes fue usado .
