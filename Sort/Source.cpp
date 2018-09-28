@@ -1,8 +1,6 @@
 #include "Sort.h"
 #include "MisFunciones.h"
 
-
-
 int main() {
 	int usuarioNumero = 0;
 	std::cout << "Dame un Numero positivo \n";

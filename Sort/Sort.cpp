@@ -398,4 +398,100 @@ void InsertionSort(int *Arreglo, unsigned short size) {
 
 }
 
+void SelectionSort(int *Arreglo, unsigned short size) {
+	// el Selection Sort busca el elemento mas 
+	// Chico y lo pone al inicio del arreglo
+	// Luego repite eso excepto que pone el 
+	// elemento mas Chico que Encuentra 
+	// al lado del El elemeto mas Chico Previo. 
+
+	/*Ejemplo
+	[9][6][4][7]
+
+	el 4 y 9 Cambian de lugar
+	[4][6][9][7]
+
+	se queda igual
+
+	[4][6][9][7]
+
+	el 9 y 7 cambian de lugar
+
+
+	[4][6][7][9]
+
+	se Termino .
+	*/
+
+	// tengo este valor(ElementoACambiar) porque voy a ramplazar
+	// este con "ElementoMasChico" y para hacer
+	// el seleccion sort voy a tener que intercambiar valores 
+
+	int ElementoACambiar = 0;
+
+	// Este valor me dice cual elemento del Arreglo
+	//( menos los que ya fueron Organizados ) Es el MasChico.
+	int ElementoMasChico = 0;
+
+	// Este valor me dice la posicion del "ElementoMasChico"
+	// dentro del Arreglo 
+	int IndiceInicialElementoMasChico = 0;
+
+	// este valor indica a donde ira 
+	// el "ElementoMasChico" dentro del 
+	// Arreglo Arreglo 
+	int IndiceParaIntercambio = 0;
+
+
+	for (int i = 0; i < size; ++i)
+	{
+		// Asigno la variable "ElementoMasChico" al 
+		// primer valor del arreglo en el espacio 'i'
+		// porque como inicialize la variable "ElementoMasChico"
+		// como 0 solo valores menor al 0 se podian asignar 
+		// despues y no puedo garantizar que siquiera exista elemento
+		// menores que zero . 
+		ElementoMasChico = Arreglo[i];
+
+		// reposiciono el Indice ( si no se hace esto todo el arreglo de el sort
+		// a veces pone valores en lugares arbirtrarios )
+		IndiceInicialElementoMasChico = i;
+
+		// esto es para tener la copia del valor que ahi antes
+		// para usarlo despues 
+		ElementoACambiar = Arreglo[IndiceParaIntercambio];
+
+		// asigno j a =IndiceParaElementoMasChico porque SelectionSort
+		// no Require que vea todo el arreglo cada ciclo. 
+		for (int j = IndiceParaIntercambio; j < size; ++j)
+		{
+			//Ago la comparacion para ver cual es el elemento mas Chico
+			// de la parte no Organizada .
+			if (ElementoMasChico > Arreglo[j]) {
+				ElementoMasChico = Arreglo[j];
+				IndiceInicialElementoMasChico = j;
+			}
+		}
+
+		//asigno el Valor mas Chico al lugar donde deberia esta en el arreglo 
+		Arreglo[IndiceParaIntercambio] = Arreglo[IndiceInicialElementoMasChico];
+
+		// este if es para que no cambie un valor que necesita cambiar
+		// si el ElementoMasChico esta en el inicio no veo razon para 
+		// cambiarlo .
+		if (!(IndiceParaIntercambio == IndiceInicialElementoMasChico)) {
+			Arreglo[IndiceInicialElementoMasChico] = ElementoACambiar;
+
+		}
+
+		// cuando todos los demas pasos se cumplan
+		// no tender que ver todo el arreglo de nuevo
+		// por esa razon avanso un espacio .
+		IndiceParaIntercambio++;
+
+	}
+
+}
+
+
 

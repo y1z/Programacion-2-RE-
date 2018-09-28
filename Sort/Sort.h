@@ -16,3 +16,5 @@ void InsertionSort(std::vector<int> &Arreglo);
 void BorbujaSort(int *Arreglo,unsigned short size);
 
 void InsertionSort(int *Arreglo, unsigned short size);
+
+void SelectionSort(int *Arreglo, unsigned short size);
