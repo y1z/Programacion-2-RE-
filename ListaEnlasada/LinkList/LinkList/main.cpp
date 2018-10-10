@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ListaEnlasada.h"
-#include "ListaDouble.h"
+#include "ListaEnlasadaDoble.h"
 
 void Stop() {
 	std::cin.ignore();
@@ -8,22 +8,14 @@ void Stop() {
 }
 
 int main() {
-	//ListaEnlasada L1(1);
-	//ListaEnlasada L2(2);
-	//ListaEnlasada L3(3);
-	//ListaEnlasada L4(4);
-	//ListaEnlasada L5(5);
+	ListaEnlasadaDoble *LDp = new ListaEnlasadaDoble(5);
+	Nodo *Np1 = new Nodo(789);
+	LDp->PushBack(Np1);
 
-	ListaDouble LD1(1);
-	ListaDouble LD2(2);
-	ListaDouble LD3(3);
-	ListaDouble LD4(4);
-
-	LD1.EnlasarDouble(LD2);
-	LD2.EnlasarDouble(LD3);
-	LD3.EnlasarDouble(LD4);
-	LD1.BuscarValor(4);
+	LDp->PrintList();
+	
+	
+	delete LDp;
 	Stop();
-
 	return 0;
 }

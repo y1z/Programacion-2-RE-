@@ -21,4 +21,19 @@ void ListaDouble::EnlasarDouble(ListaDouble &ListaDoble)
 	ListaDoble.last = this;
 }
 
+int ListaDouble::BuscarValor(int Valor)
+{
+	 if(this->Valor == Valor)
+	 {
+		std::cout << "su valor si esta en la ListaEnlasada \n";
+		return this->Valor;
+	 }
+    else if (this->next == nullptr) {
+		std::cout << "El valor que buca no esta en la lista \n";
+		return 0;
+	}
+	else {
+		next->BuscarValor(Valor);
+	}
 
+}

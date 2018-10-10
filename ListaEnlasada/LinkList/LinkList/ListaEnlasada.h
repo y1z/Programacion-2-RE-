@@ -1,31 +1,22 @@
 #pragma once
-#include<iostream>
-
-class ListaEnlasada
+#include "Nodo.h"
+class ListaEnlasada :
+	public Nodo
 {
-//contrctores y destructor
 public:
 	ListaEnlasada();
+	ListaEnlasada(int CantidadDeNodos);
+	virtual~ListaEnlasada();
 
-	ListaEnlasada(int Valor);
+	//inicializo esto como -1 para ver si saber 
+	// si algo sail mal en el proceso de 
+	// asignar posicion al linklist 
+	int CantidadDeNodos = -1;
 
-	 virtual~ListaEnlasada();
 public:
+	void CrearListaSingularEnlasada(int CantidadDeNodos);
+private:
+	void BorrarListaSingularEnlasada();
 
-	// Valor que contiene el nodo 
-	int Valor = 0;
-	// puntero al proximo nodo 
-	ListaEnlasada *next = nullptr;
-
-//Metodos de la clase 
-public:
-    void EnlasarNext(ListaEnlasada &NextLink);
-	void PrintValor();
-	int BuscarValor(int ValorBuscar);
-	void Pop();
-virtual	void Push(ListaEnlasada &Nodo);
-
-//Sobre carga de Operadores 
-public:
-	 void operator>>(ListaEnlasada &Nodo);
 };
+
