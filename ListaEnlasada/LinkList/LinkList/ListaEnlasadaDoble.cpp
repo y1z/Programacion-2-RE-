@@ -1,7 +1,5 @@
 #include "ListaEnlasadaDoble.h"
 
-
-
 ListaEnlasadaDoble::ListaEnlasadaDoble()
 {
 }
@@ -25,6 +23,7 @@ void ListaEnlasadaDoble::CrearListaEnlasadaDoble(int CantidadDeNodos)
 		if (i == 0)
 		{
 			this->NextNodo = new Nodo(i);
+			this->NextNodo->M_Posicion = i;
 		}
 		else
 		{
@@ -54,16 +53,42 @@ void ListaEnlasadaDoble::BorrarListaEnlasadaDoble()
 
 }
 
-void ListaEnlasadaDoble::PushBack(Nodo *OtroNodo)
+void ListaEnlasadaDoble::PushFront(Nodo *OtroNodo)
 {
+	//crear un puntero temporaral al nodo actual
 	Nodo *Temp = this->NextNodo;
+
+	//cambiar el noto al que apunto 
 	this->NextNodo = OtroNodo;
+	/*dado que estoy insertand una nueva */
+	OtroNodo->M_Posicion = 0;
 	OtroNodo->NextNodo = Temp;
 }
 
-void ListaEnlasadaDoble::PopBack()
+void ListaEnlasadaDoble::PopFront()
 {
 	Nodo *Temp = this->NextNodo->NextNodo;
-	delete this->NextNodo->NextNodo;
+	delete this->NextNodo;
 	this->NextNodo = Temp;
+}
+
+/*todo lo que hace este metodo es 
+imprimir los valore que tiene los 
+nodos , por que Antes me imprimia 
+un zero demas 
+*/
+void ListaEnlasadaDoble::PrintList()  {
+	this->NextNodo->PrintList();
+}
+
+/*todo lo que hace este metodo es
+Poner un nodo dentro del linklist
+*/
+void ListaEnlasadaDoble::InsertarNodoHeap(Nodo *OtroNodo, int Posicion)
+{
+	if (CantidadDeNodos > 0) {
+		this->NextNodo->InsertarNodoHeap(OtroNodo, Posicion);
+	}
+
+
 }

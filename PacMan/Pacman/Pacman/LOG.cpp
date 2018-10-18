@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include"LOG.h"
+
 
 using std::cout;
 using std::endl;
@@ -11,7 +13,7 @@ LOG::~LOG()
 
 void LOG::info(const char* mensage) {
 	if (M_LogLevel >= M_LogSeguro)
-		cout << "[info]" << mensage << endl;
+		cout << "[info] " << mensage << endl;
 }
 
 void LOG::error(const char* mensage) {
@@ -22,7 +24,7 @@ void LOG::error(const char* mensage) {
 
 void LOG::Warn(const char* mensage) {
 	if (M_LogLevel >= M_LogAvertencia)
-		cout << "[WARN]" << mensage << endl;
+		cout << "[WARN] " << mensage << endl;
 }
 
 void LOG::setLevel(int i) {

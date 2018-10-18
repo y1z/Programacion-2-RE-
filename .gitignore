@@ -43,6 +43,11 @@
 *.out
 *.app
 
+# Visual sudio 
+*.vcxproj
+*.vcxporj.filters
+*.vcproj.user
+
 
 Debug/
 *.log

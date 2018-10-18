@@ -91,7 +91,7 @@ void Nodo::PushDouble(Nodo * OtroNodo)
 
 void Nodo::PushDouble(Nodo * OtroNodo, int &Valor, int &Posicion)
 {
-	if (this->NextNodo == nullptr)
+	if (this->NextNodo->NextNodo == nullptr)
 	{
 		NextNodo->EnlasarDouble(OtroNodo);
 		NextNodo->M_Posicion = Posicion;
@@ -99,7 +99,7 @@ void Nodo::PushDouble(Nodo * OtroNodo, int &Valor, int &Posicion)
 	}
 	else
 	{
-		NextNodo->PushDouble(OtroNodo);
+		NextNodo->PushDouble(OtroNodo, Valor, Posicion);
 	}
 
 }
@@ -153,7 +153,7 @@ void Nodo::PrintList()
 	}
 	else
 	{
-		this->NextNodo->PrintList();
+		NextNodo->PrintList();
 	}
 }
 
@@ -187,9 +187,10 @@ void Nodo::InsertarNodoHeap(Nodo *OtroNodo,int Posicion)
 		if (this->NextNodo->NextNodo != nullptr && this->NextNodo->PrevNodo != nullptr)
 		{
 			OtroNodo->NextNodo = this->NextNodo->NextNodo;
-			OtroNodo->PrevNodo = this->NextNodo->PrevNodo;
+			OtroNodo->PrevNodo = this->PrevNodo;
 			delete this->NextNodo->NextNodo;
 			this->NextNodo = OtroNodo;
+			OtroNodo = this->NextNodo;
 
 		}
 		// para Nodos Singularmente Enlasados 

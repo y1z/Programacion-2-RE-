@@ -8,14 +8,9 @@ void Stop() {
 }
 
 int main() {
-	ListaEnlasadaDoble *LDp = new ListaEnlasadaDoble(5);
-	Nodo *Np1 = new Nodo(789);
-	LDp->PushBack(Np1);
+	ListaEnlasadaDoble LS(6);
+	LS.PrintList();
 
-	LDp->PrintList();
-	
-	
-	delete LDp;
 	Stop();
 	return 0;
 }

@@ -13,8 +13,11 @@ public:
 
 public:
 	void CrearListaEnlasadaDoble(int CantidadDeNodos);
-	void PushBack(Nodo *OtroNodo);
-	void PopBack();
+	void PushFront(Nodo *OtroNodo);
+	void PopFront();
+
+	void PrintList()override;
+	void InsertarNodoHeap(Nodo *OtroNodo, int Posicion)override;
 public:
 	void BorrarListaEnlasadaDoble();
 };
