@@ -12,7 +12,7 @@ public:
 
 	int M_Elementos = 0;
 public:
-	void Push();
+	void Push()override;
 	void Pop();
 	void pull(const std::string &Valor);
 	void CrearCola(int x);

@@ -11,20 +11,16 @@ void Stop() {
 
 void Comenzar();
 
-void Buscar(Stack* ptr_stack);
+void Buscar(Nodo* ptr_Nodo);
 
-void Menu(Stack* ptr_stack);
-
-void Buscar(Cola* ptr_Cola);
-
-void Menu(Cola* ptr_Cola);
+void Menu(Nodo* ptr_Nodo);
 
 void DibujarMenu();
 
 int main() {
 
+
 	Comenzar();
-	Stop();
 	return 0;
 }
 
@@ -38,14 +34,14 @@ void Comenzar()
 	std::cin >> Opciones;
 	if (Opciones == 1)
 	{
-		Stack* ptr_stack = new Stack;
+		Nodo* ptr_stack = new Stack;
 		printf("\n\n\n\n\n\n\n");
 		Menu(ptr_stack);
 		delete ptr_stack;
 	}
 	else if (Opciones == 2)
 	{
-		Cola* ptr_cola = new Cola;
+		Nodo* ptr_cola = new Cola;
 		printf("\n\n\n\n\n\n\n");
 		Menu(ptr_cola);
 		delete ptr_cola;
@@ -54,77 +50,19 @@ void Comenzar()
 }
 
 
-void Buscar(Stack* ptr_stack)
+void Buscar(Nodo* ptr_Nodo)
 {
 	std::string tem;
 	std::cout << "a quien quiere buscar \n ";
 	std::cin >> tem;
 	std::cout << " OK \n";
-	ptr_stack->BuscarValor(tem);
-
+	ptr_Nodo->BuscarValor(tem);
 }
 
-void Menu(Stack* ptr_stack)
+void Menu(Nodo* ptr_Nodo)
 {
 	int Opciones = -1;
-	printf("1- Agregar Persona \n");
-	printf("2- Quitar  Persona \n");
-	printf("3- Mostrar Lista   \n");
-	printf("4- Buscar por Nombre\n");
-	printf("5- Buscar por apellido\n");
-	printf("0- sailr\n");
-	printf("si desea ver esta lista de comando de nuevo \n");
-	printf("solo precione cualquier numero que no este arriba \n");
-
-		
-	while (Opciones != 0) {
-		std::cin >> Opciones;
-
-		switch (Opciones)
-		{
-		case(1):
-			ptr_stack->Push();
-			break;
-		case(2):
-			ptr_stack->Pop();
-			break;
-		case(3):
-			ptr_stack->PrintList();
-			break;
-		case(4):
-			Buscar(ptr_stack);
-			break;
-		case(5):
-			Buscar(ptr_stack);
-			break;
-		default:
-			DibujarMenu();
-			break;
-		}
-	
-
-
-
-	}
-
-
-}
-
-void Buscar(Cola* ptr_stack)
-{
-	std::string tem;
-	std::cout << "A quien desea buscar ";
-	std::cin >> tem;
-	std::cout << " OK ";
-	ptr_stack->BuscarValor(tem);
-	Stop();
-	std::cout << "----------";
-
-}
-
-void Menu(Cola* ptr_cola)
-{
-	int Opciones = -1;
+	bool Activo = true;
 	printf("1- Agregar Persona \n");
 	printf("2- Quitar  Persona \n");
 	printf("3- Mostrar Lista   \n");
@@ -135,33 +73,34 @@ void Menu(Cola* ptr_cola)
 	printf("solo precione cualquier numero que no este arriba \n");
 
 
-	while (Opciones != 0)
+	while (Activo)
 	{
 		std::cin >> Opciones;
 		switch (Opciones)
 		{
 		case(1):
-			ptr_cola->Push();
+			ptr_Nodo->Push();
 			break;
 		case(2):
-			ptr_cola->Pop();
+			ptr_Nodo->Pop();
 			break;
 		case(3):
-			ptr_cola->PrintList();
+			ptr_Nodo->PrintList();
 			break;
 		case(4):
-			Buscar(ptr_cola);
+			Buscar(ptr_Nodo);
 			break;
 		case(5):
-			Buscar(ptr_cola);
+			Buscar(ptr_Nodo);
+			break;
+		case(0):
+			Activo = false;
 			break;
 		default:
 			DibujarMenu();
 			break;
 		}
-
 	}
-
 }
 
 void DibujarMenu() {

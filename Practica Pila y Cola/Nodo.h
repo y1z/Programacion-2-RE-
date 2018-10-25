@@ -45,6 +45,7 @@ public :
 	virtual void Push(Nodo * OtroNodo);
 	virtual void Push(Nodo  &OtroNodo);
 	virtual void Push(Nodo * OtroNodo, Persona &Valor, int &Posicion);
+	virtual void Push();
 
 	void PushDouble(Nodo * OtroNodo);
 	void PushDouble(Nodo * OtroNodo, Persona &Valor, int &Posicion);

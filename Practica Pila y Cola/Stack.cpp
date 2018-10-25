@@ -12,12 +12,12 @@ Stack::Stack(const char Name[], const char Apellido[], int day, int month, int y
 	//usamos el primer Nodo del stack 
 	NextNodo = Temp;
 	Temp = nullptr;
-	M_Elemento++;
+	M_Elementos++;
 }
 
 Stack::~Stack()
 {
-	for (int i = 0; i < (M_Elemento - 1); ++i)
+	for (int i = 0; i < (M_Elementos - 1); ++i)
 	{
 		NextNodo->Pop();
 	}
@@ -66,29 +66,36 @@ void Stack::Push()
 	NodoAdicional->M_Valor.SetValor(Nombre.c_str(), Apellido.c_str(), Dia, Mes, Year);
 
 
-	if (M_Elemento < 1) {
+	if (M_Elementos < 1) {
 		NextNodo = NodoAdicional;
 	}
 	else {
 		this->NextNodo->PushDouble(NodoAdicional);
 	}
 	// esto para saber cuantos elementos tengo 
-	M_Elemento++;
+	M_Elementos++;
 
 }
 
 // borro el elemento que esta en el top del
 //Stack .
 void Stack::Pop() {
-	Nodo* ptr_temp;
-	ptr_temp = ptr_Head;
-	ptr_temp = ptr_temp->GetPrev();
-	ptr_Head->PrevNodo = nullptr;
-	ptr_temp->Pop();
-	ptr_temp->NextNodo = nullptr;
-	ptr_Head = ptr_temp;
+	if(M_Elementos > 1)
+	{
+		Nodo* ptr_temp;
+		ptr_temp = ptr_Head;
+		ptr_temp = ptr_temp->GetPrev();
+		ptr_Head->PrevNodo = nullptr;
+		ptr_temp->Pop();
+		ptr_temp->NextNodo = nullptr;
+		ptr_Head = ptr_temp;
+	}
+	else {
+		delete ptr_Head;
+		ptr_Head = nullptr;
+	}
 
-	M_Elemento--;
+	M_Elementos--;
 	//this->NextNodo->Pop();
 }
 // voy a quitar pero no borra un elemento 
@@ -108,7 +115,7 @@ void Stack::pull(const std::string &Valor) {
 			Nodo* temp2 = ptr_Comparar;
 
 			//verifico que este nodo no este en el final 
-			// o comienzo del 
+			// o comienzo del stack
 			if (ptr_Comparar->NextNodo != nullptr && ptr_Comparar->PrevNodo != nullptr)
 			{// consigo los nodos ayacientes 
 				temp1 = ptr_Comparar->NextNodo;
@@ -136,9 +143,6 @@ void Stack::pull(const std::string &Valor) {
 				ptr_Comparar = nullptr;
 
 			}
-
-
-		
 		}
 		else {
 			ptr_Comparar = ptr_Comparar->GetPrev();
@@ -153,15 +157,21 @@ void Stack::BuscarValor(const std::string &Valor)
 	// para cuando tengo el mismo nombre 
 	// en mulpiles lugares 
 	bool IsRepetido = false;
+	// por si no encontro el nombre o apellido 
+	// por ningun lugar en la lista 
 	bool IsEncontrado = false;
 	// primero voy al ultimo elemento 
 	// del stack 
 	Nodo*Comparar = ptr_Head;
 	Nodo *Copia = Comparar;
-	for (int i = M_Elemento; i > 0; --i) 
+	for (int i = M_Elementos; i > 0; --i) 
 	{
+		// para ver is tiene el valor que busco 
 		if(Comparar->M_Valor == Valor)
 		{
+			// para crear un mesaje diferente
+			// cuando temos el mismo nombre 
+			// en multiples nodos 
 			if (IsRepetido == false) {
 				std::cout << "Encontramos a '" << Valor << "' en el indice " << i;
 				IsRepetido = true;
@@ -186,7 +196,9 @@ void Stack::BuscarValor(const std::string &Valor)
 		}
 		Copia = Comparar;
 	}
-
+	if (IsEncontrado == false) {
+		std::cout << "no Pudimos encontrar el "<<Valor <<"en la Pila \n";
+	}
 }
 
 void Stack::CrearStack(int x)
@@ -198,5 +210,18 @@ void Stack::CrearStack(int x)
 
 void Stack::PrintList()
 {
-	NextNodo->PrintList();
+	if(M_Elementos > 0)
+	{
+		Nodo *tem = ptr_Head;
+		for (int i = 0; i < M_Elementos; ++i)
+		{
+			tem->PrintValue();
+			tem = tem->GetPrev();
+		}
+		tem = nullptr;
+	}
+	else{
+		std::cout << "No hay elementos en la Pila \n";
+	}
+
 }

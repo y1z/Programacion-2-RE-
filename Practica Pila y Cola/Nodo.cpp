@@ -83,6 +83,22 @@ void Nodo::Push(Nodo * OtroNodo, Persona &Valor, int &Posicion)
 
 }
 
+void Nodo::Push()
+{
+	Nodo *NodoVacio = new Nodo;
+	Nodo* tem = this;
+	Nodo* Copia = tem;
+	while(NextNodo != nullptr )
+	{
+		tem = tem->GetNext();
+		if (Copia == tem) {
+			tem->NextNodo = NodoVacio;
+			break;
+		}
+	}
+
+}
+
 void Nodo::PushDouble(Nodo * OtroNodo)
 {
 	if (this->NextNodo == nullptr)

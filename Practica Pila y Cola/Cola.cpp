@@ -36,6 +36,7 @@ void Cola::Push()
 
 void Cola::Pop()
 {
+	if (M_Elementos > 1) {
 	Nodo* temp1 = ptr_FirstNodo;
 	Nodo* temp2;
 	ptr_FirstNodo = ptr_FirstNodo->GetNext();
@@ -44,6 +45,12 @@ void Cola::Pop()
 	temp2->Pop();
 	temp1 = nullptr;
 	temp2 = nullptr;
+	}
+	else {
+		delete ptr_FirstNodo;
+		ptr_FirstNodo = nullptr;
+	}
+	M_Elementos--;
 }
 
 void Cola::pull(const std::string &Valor) {
@@ -60,7 +67,11 @@ void Cola::CrearCola(int x) {
 
 void Cola::PrintList()
 {
+	if (M_Elementos > 0)
 	ptr_FirstNodo->PrintList();
+	else {
+		std::cout << "no exite elemento en esta Cola\n";
+	}
 }
 
 void Cola::BuscarValor(const std::string &Valor)
@@ -102,6 +113,9 @@ void Cola::BuscarValor(const std::string &Valor)
 			break;
 		}
 		Copia = Comparar;
+	}
+	if (IsEncontrado == false) {
+		std::cout << "no Pudimos encontrar el " << Valor << "en la Cola \n";
 	}
 
 }

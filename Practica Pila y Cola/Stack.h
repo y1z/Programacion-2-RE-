@@ -16,7 +16,7 @@ public:
 	
 	// para contar cuantos elemento 
 	// tiene este Stack 
-	int M_Elemento = 0;
+	int M_Elementos = 0;
 public:
 	void Push();
 	void Pop();
