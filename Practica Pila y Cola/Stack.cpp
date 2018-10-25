@@ -197,7 +197,7 @@ void Stack::BuscarValor(const std::string &Valor)
 		Copia = Comparar;
 	}
 	if (IsEncontrado == false) {
-		std::cout << "no Pudimos encontrar el "<<Valor <<"en la Pila \n";
+		std::cout << "no Pudimos encontrar el ["<<Valor <<"] en la Pila \n";
 	}
 }
 
