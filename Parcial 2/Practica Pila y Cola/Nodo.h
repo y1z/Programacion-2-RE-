@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include "Persona.h"
-class Nodo
+#include "List.h"
+class Nodo : public List
 {
 public:
 	Nodo();
@@ -66,6 +67,8 @@ public :
 	intentando econtrar el valor que desas , si no 
 	lo encuetra , de dice que no lo encontro */
 	virtual void BuscarValor(const std::string &Valor);
+	
+	virtual void BuscarValor()override;
 
 	/*Para dar otro Valor al nodo*/
 	virtual void SetValor(Persona &Valor);

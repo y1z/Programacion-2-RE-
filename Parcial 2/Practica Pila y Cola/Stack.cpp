@@ -4,6 +4,11 @@ Stack::Stack()
 {
 }
 
+Stack::Stack(int x)
+{	
+	AumentarElementos(x);
+}
+
 Stack::Stack(const char Name[], const char Apellido[], int day, int month, int year) {
 	// los nodo contiene una clase persona 
 	Nodo *Temp = new Nodo(Name, Apellido, day, month, year);
@@ -17,6 +22,7 @@ Stack::Stack(const char Name[], const char Apellido[], int day, int month, int y
 
 Stack::~Stack()
 {
+	// borro todos los nodos 
 	for (int i = 0; i < (M_Elementos - 1); ++i)
 	{
 		NextNodo->Pop();
@@ -27,8 +33,6 @@ Stack::~Stack()
 		delete ptr_Pull;
 		ptr_Pull = nullptr;
 	}
-
-
 }
 
 void Stack::Push()
@@ -65,7 +69,6 @@ void Stack::Push()
 	//valore de la instancia 
 	NodoAdicional->M_Valor.SetValor(Nombre.c_str(), Apellido.c_str(), Dia, Mes, Year);
 
-
 	if (M_Elementos < 1) {
 		NextNodo = NodoAdicional;
 	}
@@ -74,11 +77,10 @@ void Stack::Push()
 	}
 	// esto para saber cuantos elementos tengo 
 	M_Elementos++;
-
 }
 
-// borro el elemento que esta en el top del
-//Stack .
+// borro el elemento que esta al final del
+// Stack .
 void Stack::Pop() {
 	if(M_Elementos > 1)
 	{
@@ -141,7 +143,6 @@ void Stack::pull(const std::string &Valor) {
 				temp1->NextNodo = nullptr;
 				ptr_Pull = ptr_Comparar;
 				ptr_Comparar = nullptr;
-
 			}
 		}
 		else {
@@ -152,26 +153,29 @@ void Stack::pull(const std::string &Valor) {
 
 }
 
-void Stack::BuscarValor(const std::string &Valor)
-{
+void Stack::BuscarValor() {
+	// para saber que valor esta 
+	// buscado el usario 
+	std::string Valor;
+	/*Este nodo se sera usado para
+	ver si lo que */
+	Nodo * ptr_temp = ptr_Head;
+	Nodo *ptr_Copia = nullptr;
 	// para cuando tengo el mismo nombre 
 	// en mulpiles lugares 
 	bool IsRepetido = false;
 	// por si no encontro el nombre o apellido 
 	// por ningun lugar en la lista 
 	bool IsEncontrado = false;
-	// primero voy al ultimo elemento 
-	// del stack 
-	Nodo*Comparar = ptr_Head;
-	Nodo *Copia = Comparar;
-	for (int i = M_Elementos; i > 0; --i) 
+
+	std::cout << "\nDame un nombre o apellido a buscar \n";
+	std::cin >> Valor;
+
+	for (int i = M_Elementos; i > 0; --i)
 	{
-		// para ver is tiene el valor que busco 
-		if(Comparar->M_Valor == Valor)
+		if(ptr_temp->M_Valor == Valor)
 		{
-			// para crear un mesaje diferente
-			// cuando temos el mismo nombre 
-			// en multiples nodos 
+
 			if (IsRepetido == false) {
 				std::cout << "Encontramos a '" << Valor << "' en el indice " << i;
 				IsRepetido = true;
@@ -182,26 +186,18 @@ void Stack::BuscarValor(const std::string &Valor)
 				std::cout << " ," << i;
 			}
 		}
-		// para consiguir el nodo Anterior 
-		Comparar = Comparar->GetPrev();
-
-		// verifica que si consiguio el nodo.
-		if (Copia == Comparar)
-		{
-			if(IsEncontrado == false)
-			{
-				std::cout << "no Encontramos a " << Valor << " en la lista ";
-			}
-			break;
-		}
-		Copia = Comparar;
+		ptr_Copia = ptr_temp;
+		ptr_temp = ptr_temp->GetPrev();
 	}
+
 	if (IsEncontrado == false) {
-		std::cout << "no Pudimos encontrar el ["<<Valor <<"] en la Pila \n";
+		std::cout << "no Pudimos encontrar el [" << Valor << "] en la Pila \n";
 	}
 }
 
-void Stack::CrearStack(int x)
+// solo llama la fucion push x cantidad 
+// de veces 
+void Stack::AumentarElementos(int x)
 {
 	for (int i = 0; i < x; ++i) {
 		this->Push();
@@ -223,5 +219,33 @@ void Stack::PrintList()
 	else{
 		std::cout << "No hay elementos en la Pila \n";
 	}
+
+}
+
+void Stack::BusquedaBinaria(const std::string &Valor)
+{
+	// uso punteros hacia los valores originales 
+	// para consumir menos memoria 
+	std::vector <std::string*> ArregloTemp;
+	// para hacer espacio para tanto, para el nombre 
+	// como el apellido 
+	ArregloTemp.resize(M_Elementos * 2);
+	Nodo* Temp = ptr_Head;
+
+	for (int i = 0; i < M_Elementos; ++i) {
+		// pongo los nombre y apellido en extremos opuestos 
+		// del vector para no hacer el doble de ciclos 
+		// metiendolos detro del vector 
+		ArregloTemp[i] = Temp->M_Valor.getNombrePointer();
+		ArregloTemp[(ArregloTemp.size() - 1) - i] = Temp->M_Valor.getApellidoPointer();
+		//voy al nodo previo 
+		Temp = Temp->GetPrev();
+	}
+
+
+}
+
+void Stack::Sort(std::vector<std::string*> &vec) {
+
 
 }

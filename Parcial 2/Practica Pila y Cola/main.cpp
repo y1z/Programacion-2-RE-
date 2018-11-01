@@ -3,22 +3,27 @@
 #include "Stack.h"
 #include "Cola.h"
 
-
 void Stop() {
 	std::cin.ignore();
 	std::cin.get();
 }
 
+// solo imprime el '\n' x cantidad de veces 
+//para hacer el efecto de un Clear screen
+void SemiClearScreen(int x = 40)
+{
+	for (int i = 0; i < x; ++i) {
+		printf("\n");
+	}
+}
+
 void Comenzar();
 
-void Buscar(Nodo* ptr_Nodo);
-
-void Menu(Nodo* ptr_Nodo);
+void Menu(List* ptr_list);
 
 void DibujarMenu();
 
 int main() {
-
 
 	Comenzar();
 	return 0;
@@ -34,33 +39,25 @@ void Comenzar()
 	std::cin >> Opciones;
 	if (Opciones == 1)
 	{
-		Nodo* ptr_stack = new Stack;
+		List* ptr_stack = new Stack;
 		printf("\n\n\n\n\n\n\n");
 		Menu(ptr_stack);
 		delete ptr_stack;
 	}
 	else if (Opciones == 2)
 	{
-		Nodo* ptr_cola = new Cola;
+		List* ptr_cola = new Cola;
 		printf("\n\n\n\n\n\n\n");
 		Menu(ptr_cola);
 		delete ptr_cola;
 	}
 
+
 }
 
-
-void Buscar(Nodo* ptr_Nodo)
+void Menu(List* ptr_list)
 {
-	std::string tem;
-	std::cout << "a quien quiere buscar \n ";
-	std::cin >> tem;
-	std::cout << " OK \n";
-	ptr_Nodo->BuscarValor(tem);
-}
-
-void Menu(Nodo* ptr_Nodo)
-{
+	SemiClearScreen();
 	int Opciones = -1;
 	bool Activo = true;
 	printf("1- Agregar Persona \n");
@@ -79,19 +76,24 @@ void Menu(Nodo* ptr_Nodo)
 		switch (Opciones)
 		{
 		case(1):
-			ptr_Nodo->Push();
+			ptr_list->Push();
+			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(2):
-			ptr_Nodo->Pop();
+			ptr_list->Pop();
+			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(3):
-			ptr_Nodo->PrintList();
+			ptr_list->PrintList();
+			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(4):
-			Buscar(ptr_Nodo);
+			ptr_list->BuscarValor();
+			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(5):
-			Buscar(ptr_Nodo);
+			ptr_list->BuscarValor();
+			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(0):
 			Activo = false;

@@ -20,6 +20,8 @@ public:// variables
 public:// metodos 
 	void Print();
 	void SetValor(const char Nombre[], const char Apellido[], int Dia, int Mes, int Year);
+	std::string* getNombrePointer();
+	std::string* getApellidoPointer();
 public:
 	// Operadores sobreCagados 
 	void operator=(Persona &persona);

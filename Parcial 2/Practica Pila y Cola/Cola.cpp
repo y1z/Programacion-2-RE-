@@ -36,15 +36,23 @@ void Cola::Push()
 
 void Cola::Pop()
 {
+	// si no se complie la condicion 
+	// borro los datos del primer Nodo 
 	if (M_Elementos > 1) {
-	Nodo* temp1 = ptr_FirstNodo;
-	Nodo* temp2;
-	ptr_FirstNodo = ptr_FirstNodo->GetNext();
-	temp1->NextNodo = nullptr;
-	temp2 = temp1;
-	temp2->Pop();
-	temp1 = nullptr;
-	temp2 = nullptr;
+		// creo 2 nodo temprales 
+		Nodo* temp1 = ptr_FirstNodo;
+		Nodo* temp2 = nullptr;
+		// muevo el puntero del primer nodo para el 
+		// nodo siguente 
+		ptr_FirstNodo = ptr_FirstNodo->GetNext();
+		//quito el nodo que de la Cola 
+		temp1->NextNodo = nullptr;
+		// Enlaso en nodo temp2 con temp1 
+		// para hacer le Pop.
+		temp2 = temp1;
+		temp2->Pop();
+		temp1 = nullptr;
+		temp2 = nullptr;
 	}
 	else {
 		delete ptr_FirstNodo;
@@ -74,8 +82,10 @@ void Cola::PrintList()
 	}
 }
 
-void Cola::BuscarValor(const std::string &Valor)
-{
+void Cola::BuscarValor() {
+	std::cout << "dime el valor que quires ";
+	std::string Valor;
+	std::cin >> Valor;
 
 	// para cuando tengo el mismo nombre 
 	// en mulpiles lugares 
@@ -104,11 +114,11 @@ void Cola::BuscarValor(const std::string &Valor)
 		Comparar = Comparar->GetNext();
 
 		// para verificar que si cambio de nodo 
-		if(Copia == Comparar)
+		if (Copia == Comparar)
 		{
 			if (IsEncontrado == false)
 			{
-				std::cout << "no Encontramos a " << Valor << " en la lista ";
+				std::cout << "no Encontramos a [" << Valor << "] en la lista ";
 			}
 			break;
 		}

@@ -21,7 +21,6 @@ int Year)
 Persona::~Persona() 
 {}
 
-
 void Persona::Print() {
 	std::cout << " [Nombre { " << this->M_nombre << " } " << " Apellido { " << this->M_apellido << " } "
 		<< "Fecha de Nacimiento " << this->M_DayNacimiento << "/" << this->M_MesNacimiento <<
@@ -38,7 +37,17 @@ void Persona::SetValor(const char Nombre[], const char Apellido[], int Dia, int 
 	this->M_YearNacimiento = Year;
 }
 
+// todo lo que hace los 2 siguente 
+// metodos es returnar un puntero 
+std::string* Persona::getNombrePointer() {
+	std::string* ptr_nombre = &M_nombre;
+	return ptr_nombre;
+}
 
+std::string* Persona::getApellidoPointer() {
+	std::string* ptr_Apellido = &M_apellido;
+	return ptr_Apellido;
+}
 
 // asigno todos los valore de esta Persona
 // para que sean iguales a la otra Persona 
@@ -51,13 +60,11 @@ void Persona::operator=(Persona &persona)
 	this->M_YearNacimiento = persona.M_YearNacimiento;
 }
 
-bool Persona::operator==(const std::string &persona) {
+bool Persona::operator==(const std::string &NombreApellido) {
 
-	if (persona == this->M_nombre || persona == this->M_apellido) {
+	if (NombreApellido == this->M_nombre || NombreApellido == this->M_apellido) {
 		return true;
 	}
 	return false;
 
 }
-
-

@@ -182,6 +182,62 @@ void Nodo::BuscarValor(const std::string &Valor)
 	}
 }
 
+void Nodo::BuscarValor()
+{	// este string se usa para saber que 
+	// Nombre o Apllido  quiere el usario 
+	std::string Nombre;
+	// nodo temporal 
+	Nodo* temp = nullptr;
+	temp = this;
+	//usare este nodo para determinar 
+	// si el temp llego al ultimo nodo 
+	Nodo* Copia = nullptr;
+
+	std::cout << "Dame un nombre o apllido para buscar \n";
+	std::cin >> Nombre;
+
+
+	// para saber si encontre el 
+	// valor que estaba buscando el 
+	// usuario 
+	bool IsEncontrado = false;
+
+	while (temp != Copia)
+	{
+		if(temp == Copia)
+		{
+			break;
+		}
+		// si encuetra el valor que esta buscando 
+		// termina el ciclo 
+		if(temp->M_Valor.M_nombre == Nombre 
+		|| temp->M_Valor.M_apellido == Nombre)
+		{
+			IsEncontrado = true;
+			break;
+		}
+		// el nodo temporal deberia apuntar al 
+		// siguente nodo sino entonces el ciclo se 
+		// termina 
+		Copia = temp;
+		temp = temp->GetNext();
+	}
+
+	
+	//IsEncontrado ? (std::cout << "Encontramos a " << Nombre) : std::cout << "no lo encontramos ";
+
+	if (IsEncontrado) {
+		std::cout << "Encontramos a [" << Nombre<<']';
+	}
+	else {
+		std::cout << "No Encontramos a " << Nombre;
+	}
+
+	//std::cout << IsEncontrado ? "Encontramos a " + Nombre : "no lo encontramos ";
+}
+
+
+
 void Nodo::SetValor(Persona &Valor)
 {
 	this->M_Valor = Valor;
@@ -248,3 +304,36 @@ void Nodo::operator=(Nodo *OtroNodo)
 {
 	this->NextNodo = OtroNodo;
 }
+
+/*
+
+
+
+a>o>v>r
+
+vector = new Vector(); 
+sort (vector);
+10
+
+int init = 0;
+int fin =  vector.size();
+int id = fin / 2;
+
+if(vector[id] < str)
+
+init = id + 1
+id = init + (fin - init) / 2; // 8
+
+vector.size()
+
+
+a
+o
+r
+v
+
+
+
+
+
+*/
