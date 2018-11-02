@@ -1,7 +1,7 @@
 #pragma once
 #include "Nodo.h"
 class Cola :
-	public Nodo
+	public Nodo , public List
 {
 public:
 	Cola();

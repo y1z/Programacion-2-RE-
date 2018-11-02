@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Persona.h"
 #include "List.h"
-class Nodo : public List
+class Nodo
 {
 public:
 	Nodo();

@@ -168,6 +168,8 @@ void Stack::BuscarValor() {
 	// por ningun lugar en la lista 
 	bool IsEncontrado = false;
 
+	Persona * ptr_Persona = nullptr;
+
 	std::cout << "\nDame un nombre o apellido a buscar \n";
 	std::cin >> Valor;
 
@@ -175,15 +177,17 @@ void Stack::BuscarValor() {
 	{
 		if(ptr_temp->M_Valor == Valor)
 		{
+			ptr_Persona = &ptr_temp->M_Valor;
 
 			if (IsRepetido == false) {
-				std::cout << "Encontramos a '" << Valor << "' en el indice " << i;
+				std::cout << "aqui el usario qu bucaba \n\n";
+				ptr_Persona->Print();
 				IsRepetido = true;
 				IsEncontrado = true;
 			}
 			else
 			{
-				std::cout << " ," << i;
+				ptr_Persona->Print();
 			}
 		}
 		ptr_Copia = ptr_temp;

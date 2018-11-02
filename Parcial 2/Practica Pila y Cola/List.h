@@ -6,5 +6,5 @@ public:
 	virtual void Pop() = 0;
 	virtual void BuscarValor() = 0;
 	virtual void PrintList() = 0;
+	
 };
-

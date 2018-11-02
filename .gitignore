@@ -47,6 +47,7 @@
 *.vcxproj
 *.vcxporj.filters
 *.vcproj.user
+*.vcxproj
 
 
 Debug/

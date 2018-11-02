@@ -96,12 +96,16 @@ void Cola::BuscarValor() {
 	// elemento de la cola 
 	Nodo*Comparar = ptr_FirstNodo;
 	Nodo *Copia = Comparar;
+
+	Persona * ptr_persona = nullptr;
 	for (int i = 0; i < M_Elementos; ++i)
 	{
 		if (Comparar->M_Valor == Valor)
 		{
+			ptr_persona = &Comparar->M_Valor;
 			if (IsRepetido == false) {
-				std::cout << "Encontramos a '" << Valor << "' en el indice " << i;
+				std::cout << "aqui el usario qu bucaba \n\n";
+				ptr_persona->Print();
 				IsRepetido = true;
 				IsEncontrado = true;
 			}
