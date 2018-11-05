@@ -28,17 +28,11 @@ Stack::~Stack()
 		NextNodo->Pop();
 	}
 	delete NextNodo;
-	if (ptr_Pull != nullptr) 
-	{
-		delete ptr_Pull;
-		ptr_Pull = nullptr;
-	}
 }
 
 void Stack::Push()
 {
-	// creo al nodo que contiene La Clase 
-	// Persona
+	// creo al nodo que contiene La Clase Persona
 
 	Nodo* NodoAdicional = new Nodo;
 
@@ -98,59 +92,6 @@ void Stack::Pop() {
 	}
 
 	M_Elementos--;
-	//this->NextNodo->Pop();
-}
-// voy a quitar pero no borra un elemento 
-// del Stack 
-void Stack::pull(const std::string &Valor) {
-	Nodo* ptr_Comparar = ptr_Head;
-
-	if (ptr_Pull != nullptr) {
-		delete ptr_Pull;
-	}
-	
-	while(this->PrevNodo != nullptr)
-	{
-		if(ptr_Comparar->M_Valor == Valor)
-		{
-			Nodo* temp1 = ptr_Comparar;
-			Nodo* temp2 = ptr_Comparar;
-
-			//verifico que este nodo no este en el final 
-			// o comienzo del stack
-			if (ptr_Comparar->NextNodo != nullptr && ptr_Comparar->PrevNodo != nullptr)
-			{// consigo los nodos ayacientes 
-				temp1 = ptr_Comparar->NextNodo;
-				temp2 = ptr_Comparar->PrevNodo;
-				temp1->NextNodo = temp2;
-				temp2->PrevNodo = temp1;
-
-				ptr_Comparar->NextNodo = nullptr;
-				ptr_Comparar->PrevNodo = nullptr;
-				ptr_Pull = ptr_Comparar;
-				ptr_Comparar = nullptr;
-			}
-			else if (ptr_Comparar->PrevNodo == nullptr) 
-			{
-				temp1 = ptr_Comparar->GetNext();
-				temp1->PrevNodo = nullptr;
-				ptr_Pull = ptr_Comparar;
-				ptr_Comparar = nullptr;
-
-			}
-			else {
-				temp1 = ptr_Comparar->GetPrev();
-				temp1->NextNodo = nullptr;
-				ptr_Pull = ptr_Comparar;
-				ptr_Comparar = nullptr;
-			}
-		}
-		else {
-			ptr_Comparar = ptr_Comparar->GetPrev();
-		}
-	
-	}
-
 }
 
 void Stack::BuscarValor() {
@@ -223,33 +164,163 @@ void Stack::PrintList()
 	else{
 		std::cout << "No hay elementos en la Pila \n";
 	}
-
 }
 
-void Stack::BusquedaBinaria(const std::string &Valor)
+void Stack::BusquedaBinariaNombre()
 {
+	std::string ValorParaBuscar;
+	std::cout << "Digame que es el nombre que quiere buscar \n Aqui -->";
+	std::cin >> ValorParaBuscar;
 	// uso punteros hacia los valores originales 
 	// para consumir menos memoria 
-	std::vector <std::string*> ArregloTemp;
-	// para hacer espacio para tanto, para el nombre 
-	// como el apellido 
-	ArregloTemp.resize(M_Elementos * 2);
+	std::vector <Persona*> ArregloTemp;
+	// para hacer espacio para tanto,preintivamente 
+	ArregloTemp.resize(M_Elementos);
+
 	Nodo* Temp = ptr_Head;
 
-	for (int i = 0; i < M_Elementos; ++i) {
-		// pongo los nombre y apellido en extremos opuestos 
-		// del vector para no hacer el doble de ciclos 
-		// metiendolos detro del vector 
-		ArregloTemp[i] = Temp->M_Valor.getNombrePointer();
-		ArregloTemp[(ArregloTemp.size() - 1) - i] = Temp->M_Valor.getApellidoPointer();
-		//voy al nodo previo 
+	for (int i = 0; i < M_Elementos; ++i)
+	{
+		ArregloTemp[i] = &Temp->M_Valor;
 		Temp = Temp->GetPrev();
 	}
+	Sort(ArregloTemp, 0, ArregloTemp.size() - 1);
+
+	bool IsEncontrado = false;
+
+	// esto dos valor dictan los indices en donde buscaremos 
+	// el valor que no pide el usario .
+	int InicioDeArreglo = 0;
+	int FinalDeArreglo = ArregloTemp.size() - 1;
+	// uso esto para indentificar si encontre el valor
+	// que esta buscando el usario 
+	int Id = ArregloTemp.size() / 2;
 
 
+	do
+	{
+		/*Si no encotramos un el valor en el medio , vamos a
+		divir la catidad de indices en donde vamos a buscar
+		y siguimos haciendo eso hasta encontra el valor */
+		if (ArregloTemp[Id]->M_nombre < ValorParaBuscar)
+		{
+			//si el valor a buscar es mayor tendermos que quitar toda la 
+			// mitad con los numero mas 
+			InicioDeArreglo = (InicioDeArreglo + FinalDeArreglo) / 2;
+		}
+		else if (ArregloTemp[Id]->M_nombre > ValorParaBuscar) 
+		{
+			FinalDeArreglo = (InicioDeArreglo + FinalDeArreglo) / 2;
+		}
+
+		Id = (InicioDeArreglo + FinalDeArreglo) / 2;
+
+		
+		if (ArregloTemp[Id]->M_nombre == ValorParaBuscar)
+		{
+			IsEncontrado = true; 
+			break;
+		}
+
+		// buscar en el centro del area dictado por las dos 
+		// variables 
+	
+
+		// si una de estas condiciones se cumple, significa que 
+		// solo exite dos mas lugares a verificar 
+		// asi que los verifco 
+		if (InicioDeArreglo + FinalDeArreglo == 1 || FinalDeArreglo - InicioDeArreglo == 1)
+		{
+			if (ArregloTemp[InicioDeArreglo]->M_nombre == ValorParaBuscar) {
+				IsEncontrado = true;
+				Id = InicioDeArreglo;
+				break;
+			}
+			else if (ArregloTemp[FinalDeArreglo]->M_nombre == ValorParaBuscar) {
+				IsEncontrado = true;
+				Id = FinalDeArreglo;
+				break;
+			}
+			break;
+		}
+	} while (ArregloTemp[Id]->M_nombre != ValorParaBuscar && InicioDeArreglo < FinalDeArreglo);
+	
+
+	if (IsEncontrado) {
+		printf("Aqui el usario que buscaba\n ");
+		ArregloTemp[Id]->Print();
+	}
+	else {
+		printf("lo que esta buscando [%s] no existe \n",ValorParaBuscar.c_str());
+	}
+
+	std::cin.get();
 }
 
-void Stack::Sort(std::vector<std::string*> &vec) {
+void Stack::Sort(std::vector<Persona*> &vec,int bajo, int alto) {
+	if(bajo < alto)
+	{
+		int pivote = Particion(vec, bajo, alto);
 
-
+		Sort(vec, bajo, pivote - 1);
+		Sort(vec, pivote + 1, alto);
+	}
 }
+
+int Stack::Particion(std::vector<Persona*> &vec, int bajo, int alto)
+{
+	// este es una referencia a un puntero 
+	Persona*& Pivote = vec[alto];
+	int ElementosMenoresAlPivote = bajo - 1;
+	for (int i = bajo; i < alto; ++i) 
+	{
+		if (Pivote->CompararNombre(vec[i])) 
+		{
+			ElementosMenoresAlPivote++;
+			if (i != ElementosMenoresAlPivote)
+			{
+				Persona* Temp = vec[i];
+				vec[i] = vec[ElementosMenoresAlPivote];
+				vec[ElementosMenoresAlPivote] = Temp;
+			}
+		}
+	}
+	Persona* Temp = Pivote;
+	Pivote = vec[ElementosMenoresAlPivote + 1];
+	vec[ElementosMenoresAlPivote + 1] = Temp;
+
+	return ElementosMenoresAlPivote + 1;
+}
+
+/*
+
+
+
+a>o>v>r
+
+vector = new Vector();
+sort (vector);
+10
+
+int init = 0;
+int fin =  vector.size();
+int id = fin / 2;
+
+if(vector[id] < str)
+
+init = id + 1
+id = init + (fin - init) / 2; // 8
+
+vector.size()
+
+
+a
+o
+r
+v
+
+
+
+
+
+*/

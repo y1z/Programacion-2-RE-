@@ -49,7 +49,6 @@ public :
 	virtual void Push();
 
 	void PushDouble(Nodo * OtroNodo);
-	void PushDouble(Nodo * OtroNodo, Persona &Valor, int &Posicion);
 
 	/*todo lo que hace es eleminar el ultimo nodo 
 	en la lista */
@@ -68,12 +67,12 @@ public :
 	lo encuetra , de dice que no lo encontro */
 	virtual void BuscarValor(const std::string &Valor);
 	
-	virtual void BuscarValor()override;
+	virtual void BuscarValor();
 
 	/*Para dar otro Valor al nodo*/
 	virtual void SetValor(Persona &Valor);
 
-	virtual void InsertarNodoHeap(Nodo *OtroNodo,int Posicion);
+	//virtual void InsertarNodoHeap(Nodo *OtroNodo,int Posicion);
 	// consiguir el proximo nodo
 	virtual Nodo* GetNext();
 	//consiguir el nodo Anterior 

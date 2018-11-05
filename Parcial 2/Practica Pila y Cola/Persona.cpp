@@ -37,17 +37,30 @@ void Persona::SetValor(const char Nombre[], const char Apellido[], int Dia, int 
 	this->M_YearNacimiento = Year;
 }
 
-// todo lo que hace los 2 siguente 
-// metodos es returnar un puntero 
-std::string* Persona::getNombrePointer() {
-	std::string* ptr_nombre = &M_nombre;
-	return ptr_nombre;
+bool Persona::CompararApellido(Persona* OtherPersona)
+{
+	if(this->M_apellido > OtherPersona->M_apellido)
+	{
+		return true;
+	}
+	return false;
 }
 
-std::string* Persona::getApellidoPointer() {
-	std::string* ptr_Apellido = &M_apellido;
-	return ptr_Apellido;
+bool Persona::CompararNombre(Persona* OtherPersona)
+{
+	if (this->M_nombre > OtherPersona->M_nombre)
+	{
+		return true;
+	}
+	return false;
 }
+
+/*bool Persona::CompararNombreYApellido(Persona* OtherPersona)
+{
+
+
+
+}*/
 
 // asigno todos los valore de esta Persona
 // para que sean iguales a la otra Persona 

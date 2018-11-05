@@ -112,20 +112,6 @@ void Nodo::PushDouble(Nodo * OtroNodo)
 
 }
 
-void Nodo::PushDouble(Nodo * OtroNodo, Persona &Valor, int &Posicion)
-{
-	if (this->NextNodo== nullptr)
-	{
-		NextNodo->EnlasarDouble(OtroNodo);
-		NextNodo->M_Posicion = Posicion;
-		NextNodo->M_Valor = Valor;
-	}
-	else
-	{
-		NextNodo->PushDouble(OtroNodo, Valor, Posicion);
-	}
-}
-
 void Nodo::Pop()
 {
 	if (this->NextNodo == nullptr)
@@ -243,36 +229,40 @@ void Nodo::SetValor(Persona &Valor)
 	this->M_Valor = Valor;
 }
 
-void Nodo::InsertarNodoHeap(Nodo *OtroNodo,int Posicion)
-{
-	//verifico si el proximo nodo esta en la posicion
-	// donde quiero replazarlo 
-	if(this->NextNodo->M_Posicion == Posicion)
-	{
-		// para Nodo dobleMenteElasados 
-		if (this->NextNodo!= nullptr && this->NextNodo->PrevNodo != nullptr)
-		{
-			OtroNodo->NextNodo = this->NextNodo->NextNodo;
-			OtroNodo->PrevNodo = this->PrevNodo;
-			delete this->NextNodo->NextNodo;
-			this->NextNodo = OtroNodo;
-			OtroNodo = this->NextNodo;
+//
+//void Nodo::InsertarNodoHeap(Nodo *OtroNodo,int Posicion)
+//{
+//	//verifico si el proximo nodo esta en la posicion
+//	// donde quiero replazarlo 
+//	if(this->NextNodo->M_Posicion == Posicion)
+//	{
+//		// para Nodo dobleMenteElasados 
+//		if (this->NextNodo!= nullptr && this->NextNodo->PrevNodo != nullptr)
+//		{
+//			OtroNodo->NextNodo = this->NextNodo->NextNodo;
+//			OtroNodo->PrevNodo = this->PrevNodo;
+//			delete this->NextNodo->NextNodo;
+//			this->NextNodo = OtroNodo;
+//			OtroNodo = this->NextNodo;
+//
+//		}
+//		// para Nodos Singularmente Enlasados 
+//		else if(this->NextNodo != nullptr)
+//		{
+//			OtroNodo->NextNodo = this->NextNodo->NextNodo;
+//			delete this->NextNodo;
+//			this->NextNodo = OtroNodo;
+//		}
+//	}
+//	else if(NextNodo != nullptr)
+//	{
+//		NextNodo->InsertarNodoHeap(OtroNodo,  Posicion);
+//	}
+//}
 
-		}
-		// para Nodos Singularmente Enlasados 
-		else if(this->NextNodo != nullptr)
-		{
-			OtroNodo->NextNodo = this->NextNodo->NextNodo;
-			delete this->NextNodo;
-			this->NextNodo = OtroNodo;
-		}
-	}
-	else if(NextNodo != nullptr)
-	{
-		NextNodo->InsertarNodoHeap(OtroNodo,  Posicion);
-	}
-}
-
+// accede al proximo nodo y tambien ,hace 
+// que no pueda acceder a memoria que no 
+// es mia .
 Nodo* Nodo::GetNext() {
 	if (this->NextNodo != nullptr) {
 		return this->NextNodo;
@@ -282,7 +272,9 @@ Nodo* Nodo::GetNext() {
 	}
 
 }
-
+// accede al previo nodo y tambien ,hace 
+// que no pueda acceder a memoria que no 
+// es mia .
 Nodo* Nodo::GetPrev() {
 	if (this->PrevNodo != nullptr)
 	{
@@ -305,35 +297,3 @@ void Nodo::operator=(Nodo *OtroNodo)
 	this->NextNodo = OtroNodo;
 }
 
-/*
-
-
-
-a>o>v>r
-
-vector = new Vector(); 
-sort (vector);
-10
-
-int init = 0;
-int fin =  vector.size();
-int id = fin / 2;
-
-if(vector[id] < str)
-
-init = id + 1
-id = init + (fin - init) / 2; // 8
-
-vector.size()
-
-
-a
-o
-r
-v
-
-
-
-
-
-*/

@@ -24,7 +24,13 @@ void Menu(List* ptr_list);
 void DibujarMenu();
 
 int main() {
+	Stack stack(5);
+	while (1) {
+		stack.BusquedaBinariaNombre();
+	}
 
+
+	Stop();
 	Comenzar();
 	return 0;
 }

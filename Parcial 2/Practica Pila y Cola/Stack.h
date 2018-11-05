@@ -2,7 +2,7 @@
 #include "Nodo.h"
 #include <vector>
 class Stack :
-	public Nodo
+	public Nodo,public List
 {
 public:
 	Stack();
@@ -11,26 +11,20 @@ public:
 	~Stack();
 	// el ultimo elemento en el stack 
 	Nodo *ptr_Head;
-	// el elemento que quitamos 
-	// pero no borramos 
-	Nodo *ptr_Pull;
 
-	
 	// para contar cuantos elemento 
 	// tiene este Stack 
 	int M_Elementos = 0;
 public:
 	void Push()override;
 	void Pop()override;
-	void pull(const std::string &Valor);
 public:
-//	void BuscarValor(const std::string &Valor)override;
 	void BuscarValor()override; 
 	void AumentarElementos(int x);
 	void PrintList()override;
-	void BusquedaBinaria(const std::string &Valor);
+	void BusquedaBinariaNombre();
 private:
-	void Sort(std::vector<std::string*> &vec);
-	void Particion();
+	void Sort(std::vector<Persona*> &vec, int bajo , int alto);
+	int Particion(std::vector<Persona*> &vec, int bajo, int alto);
 };
 
