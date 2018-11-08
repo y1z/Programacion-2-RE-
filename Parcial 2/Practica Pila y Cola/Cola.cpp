@@ -6,6 +6,10 @@ Cola::Cola()
 {
 }
 
+Cola::Cola(int x)
+{
+	AumentarCola(x);
+}
 
 Cola::~Cola()
 {
@@ -65,7 +69,7 @@ void Cola::pull(const std::string &Valor) {
 
 }
 
-void Cola::CrearCola(int x) {
+void Cola::AumentarCola(int x) {
 
 	for (int i = 0; i < x; ++i) {
 		this->Push();
@@ -132,4 +136,261 @@ void Cola::BuscarValor() {
 		std::cout << "no Pudimos encontrar el [" << Valor << "] en la Cola \n";
 	}
 
+}
+
+
+
+void Cola::BusquedaBinariaNombre()
+{
+	std::string ValorParaBuscar;
+	std::cout << "Digame que es el nombre que esta buscando \n Aqui -->";
+	std::cin >> ValorParaBuscar;
+	// uso punteros hacia los valores originales 
+	// para consumir menos memoria 
+	std::vector <Persona*> ArregloTemp;
+	// para hacer espacio para los elementos antes
+	// de intertarlos 
+	ArregloTemp.resize(M_Elementos);
+
+	Nodo* Temp = ptr_FirstNodo;
+	// consigue todos los Nodo del Stack 
+	for (int i = 0; i < M_Elementos; ++i)
+	{
+		ArregloTemp[i] = &Temp->M_Valor;
+		Temp = Temp->GetNext();
+	}
+	// Organiza por nombre 
+	Sort(ArregloTemp, 0, ArregloTemp.size() - 1, true);
+
+	bool IsEncontrado = false;
+
+	// esto dos valor dictan los indices en donde buscaremos 
+	// el valor que no pide el usario .
+	int InicioDeArreglo = 0;
+	int FinalDeArreglo = ArregloTemp.size() - 1;
+	// uso esto para indentificar si encontre el valor
+	// que esta buscando el usario 
+	int Id = ArregloTemp.size() / 2;
+
+
+	do
+	{
+		/*Si no encotramos un el valor en el medio , vamos a
+		divir la catidad de indices en donde vamos a buscar
+		y siguimos haciendo eso hasta encontra el valor */
+		if (ArregloTemp[Id]->M_nombre < ValorParaBuscar)
+		{
+			//si el valor a buscar es mayor tendermos que quitar toda la 
+			// mitad con los numero mas 
+			InicioDeArreglo = (InicioDeArreglo + FinalDeArreglo) / 2;
+		}
+		else if (ArregloTemp[Id]->M_nombre > ValorParaBuscar)
+		{
+			FinalDeArreglo = (InicioDeArreglo + FinalDeArreglo) / 2;
+		}
+
+		Id = (InicioDeArreglo + FinalDeArreglo) / 2;
+
+
+		if (ArregloTemp[Id]->M_nombre == ValorParaBuscar)
+		{
+			IsEncontrado = true;
+			break;
+		}
+
+		// buscar en el centro del area dictado por las dos 
+		// variables 
+
+
+		// si una de estas condiciones se cumple, significa que 
+		// solo exite dos mas lugares a verificar 
+		// asi que los verifco 
+		if (InicioDeArreglo + FinalDeArreglo == 1 || FinalDeArreglo - InicioDeArreglo == 1)
+		{
+			if (ArregloTemp[InicioDeArreglo]->M_nombre == ValorParaBuscar) {
+				IsEncontrado = true;
+				Id = InicioDeArreglo;
+				break;
+			}
+			else if (ArregloTemp[FinalDeArreglo]->M_nombre == ValorParaBuscar) {
+				IsEncontrado = true;
+				Id = FinalDeArreglo;
+				break;
+			}
+			break;
+		}
+	} while (ArregloTemp[Id]->M_nombre != ValorParaBuscar && InicioDeArreglo < FinalDeArreglo);
+
+
+	if (IsEncontrado) {
+		printf("Aqui el Individuo que buscaba\n ");
+		ArregloTemp[Id]->Print();
+	}
+	else {
+		printf(">lo que esta buscando [%s] no existe< \n", ValorParaBuscar.c_str());
+	}
+}
+
+void Cola::BusquedaBinariaApellido()
+{
+	std::string ValorParaBuscar;
+	std::cout << "Digame que es el Aepllido que esta buscando \n Aqui -->";
+	std::cin >> ValorParaBuscar;
+	// uso punteros hacia los valores originales 
+	// para consumir menos memoria 
+	std::vector <Persona*> ArregloTemp;
+	// para hacer espacio para los elementos antes
+	// de intertarlos 
+	ArregloTemp.resize(M_Elementos);
+
+	Nodo* Temp = ptr_FirstNodo;
+	// consigue todos los Nodo del Stack 
+	for (int i = 0; i < M_Elementos; ++i)
+	{
+		ArregloTemp[i] = &Temp->M_Valor;
+		Temp = Temp->GetNext();
+	}
+
+	// organiza por Apellidos 
+	Sort(ArregloTemp, 0, ArregloTemp.size() - 1, false);
+
+	bool IsEncontrado = false;
+
+	// esto dos valor dictan los indices en donde buscaremos 
+	// el valor que no pide el usario .
+	int InicioDeArreglo = 0;
+	int FinalDeArreglo = ArregloTemp.size() - 1;
+	// uso esto para indentificar si encontre el valor
+	// que esta buscando el usario 
+	int Id = ArregloTemp.size() / 2;
+
+
+	do
+	{
+		/*Si no encotramos un el valor en el medio , vamos a
+		divir la catidad de indices en donde vamos a buscar
+		y siguimos haciendo eso hasta encontra el valor */
+		if (ArregloTemp[Id]->M_apellido < ValorParaBuscar)
+		{
+			//si el valor a buscar es mayor tendermos que quitar toda la 
+			// mitad con los numero mas 
+			InicioDeArreglo = (InicioDeArreglo + FinalDeArreglo) / 2;
+		}
+		else if (ArregloTemp[Id]->M_apellido > ValorParaBuscar)
+		{
+			FinalDeArreglo = (InicioDeArreglo + FinalDeArreglo) / 2;
+		}
+
+		Id = (InicioDeArreglo + FinalDeArreglo) / 2;
+
+
+		if (ArregloTemp[Id]->M_apellido == ValorParaBuscar)
+		{
+			IsEncontrado = true;
+			break;
+		}
+
+		// buscar en el centro del area dictado por las dos 
+		// variables 
+
+
+		// si una de estas condiciones se cumple, significa que 
+		// solo exite dos mas lugares a verificar 
+		// asi que los verifco 
+		if (InicioDeArreglo + FinalDeArreglo == 1 || FinalDeArreglo - InicioDeArreglo == 1)
+		{
+			if (ArregloTemp[InicioDeArreglo]->M_apellido == ValorParaBuscar) {
+				IsEncontrado = true;
+				Id = InicioDeArreglo;
+				break;
+			}
+			else if (ArregloTemp[FinalDeArreglo]->M_apellido == ValorParaBuscar) {
+				IsEncontrado = true;
+				Id = FinalDeArreglo;
+				break;
+			}
+			break;
+		}
+	} while (ArregloTemp[Id]->M_apellido != ValorParaBuscar && InicioDeArreglo < FinalDeArreglo);
+
+
+	if (IsEncontrado) {
+		printf("Aqui el Individuo que buscaba\n ");
+		ArregloTemp[Id]->Print();
+	}
+	else {
+		printf(">lo que esta buscando [%s] no existe< \n", ValorParaBuscar.c_str());
+	}
+
+}
+
+
+void Cola::Sort(std::vector<Persona*> &vec, int bajo, int alto, bool IsNombre)
+{
+	if (bajo < alto) {
+
+		int Pivote = Particion(vec, bajo, alto, IsNombre);
+
+		Sort(vec, Pivote + 1, alto, IsNombre);
+		Sort(vec, bajo, Pivote - 1, IsNombre);
+
+	}
+
+}
+
+int Cola::Particion(std::vector<Persona*> &vec, int bajo, int alto, bool IsNombre)
+{
+
+	// este es una referencia a un puntero 
+	Persona*& Pivote = vec[alto];
+
+	int ElementosMenoresAlPivote = bajo - 1;
+
+	// si la condicion es verdad organizar por
+	// nombre .
+	if (IsNombre)
+	{
+		for (int i = bajo; i < alto; ++i)
+		{
+			if (Pivote->CompararNombre(vec[i]))
+			{
+				ElementosMenoresAlPivote++;
+				if (i != ElementosMenoresAlPivote)
+				{
+					Persona* Temp = vec[i];
+					vec[i] = vec[ElementosMenoresAlPivote];
+					vec[ElementosMenoresAlPivote] = Temp;
+				}
+			}
+		}
+		Persona* Temp = Pivote;
+		Pivote = vec[ElementosMenoresAlPivote + 1];
+		vec[ElementosMenoresAlPivote + 1] = Temp;
+
+		return ElementosMenoresAlPivote + 1;
+	}
+	// si la otra condicion del 'if' no se 
+	// cumple entonces organizo por apellido
+	else {
+
+		for (int i = bajo; i < alto; ++i)
+		{
+			if (Pivote->CompararApellido(vec[i]))
+			{
+				ElementosMenoresAlPivote++;
+				if (i != ElementosMenoresAlPivote)
+				{
+					Persona* Temp = vec[i];
+					vec[i] = vec[ElementosMenoresAlPivote];
+					vec[ElementosMenoresAlPivote] = Temp;
+				}
+			}
+		}
+		Persona* Temp = Pivote;
+		Pivote = vec[ElementosMenoresAlPivote + 1];
+		vec[ElementosMenoresAlPivote + 1] = Temp;
+
+		return ElementosMenoresAlPivote + 1;
+
+	}
 }

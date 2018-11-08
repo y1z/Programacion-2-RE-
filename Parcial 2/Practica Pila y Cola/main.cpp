@@ -24,14 +24,8 @@ void Menu(List* ptr_list);
 void DibujarMenu();
 
 int main() {
-	Stack stack(5);
-	while (1) {
-		stack.BusquedaBinariaNombre();
-	}
-
-
-	Stop();
 	Comenzar();
+	Stop();
 	return 0;
 }
 
@@ -94,11 +88,11 @@ void Menu(List* ptr_list)
 			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(4):
-			ptr_list->BuscarValor();
+			ptr_list->BusquedaBinariaNombre();
 			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(5):
-			ptr_list->BuscarValor();
+			ptr_list->BusquedaBinariaApellido();
 			printf("\n-->puede seleciona otro comando<-- \n");
 			break;
 		case(0):

@@ -23,8 +23,9 @@ public:
 	void AumentarElementos(int x);
 	void PrintList()override;
 	void BusquedaBinariaNombre();
+	void BusquedaBinariaApellido();
 private:
-	void Sort(std::vector<Persona*> &vec, int bajo , int alto);
-	int Particion(std::vector<Persona*> &vec, int bajo, int alto);
+	void Sort(std::vector<Persona*> &vec, int bajo, int alto,bool IsNombre);
+	int Particion(std::vector<Persona*> &vec, int bajo, int alto, bool IsNombre);
 };
 
