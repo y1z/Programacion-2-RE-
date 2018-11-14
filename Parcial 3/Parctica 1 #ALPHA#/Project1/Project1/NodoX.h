@@ -16,19 +16,17 @@ public:// Variables
 	NodoX * ptr_Menor = nullptr;
 	// el valor que contiene el nodo 
 	Persona M_Persona;
-public: 
+public: // metodos 
 	void CrearPersona();
 	void Push(NodoX * NuevoNodo);
 	bool Seach(const char Buscar[]);
 	void PopAll();
 	void Pop();
 	void Print();
+	void PrintAll();
 	NodoX* GetMayor();
 	NodoX* GetMenor();
 private:
-	// esta funcion verifica si el nodo 
-	// tiene 2 hijos
-	bool VerificarHijos(NodoX *nodo);
 	// buscar el valor a quitar y todos 
 	// los nodos que estan en el camino hacia ese 
 	// nodo 

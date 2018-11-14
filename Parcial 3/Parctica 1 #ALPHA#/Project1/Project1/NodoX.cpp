@@ -31,14 +31,14 @@ void NodoX::CrearPersona()
 void NodoX::Push(NodoX *NuevoNodo) 
 {
 	// compara las personas 
-	bool IsMayor = CompararPersona(NuevoNodo->M_Persona);
+	bool IsMenor = CompararPersona(NuevoNodo->M_Persona);
 
 	// si el valor que comparamos es mayor que el 
 	// nodo actual entonces vamos a mover
-	switch (IsMayor)
+	switch (IsMenor)
 	{
 		// Cuando el valor es Mayor al Nodo actual 
-	case (true) :
+	case (false) :
 		if(ptr_Mayor == nullptr)
 		{
 			ptr_Mayor = NuevoNodo;
@@ -48,7 +48,7 @@ void NodoX::Push(NodoX *NuevoNodo)
 		}
 		break;
 		// Cuando el valor es Menor al Nodo actual 
-	case (false):
+	case (true):
 		if (ptr_Menor == nullptr) {
 			ptr_Menor = NuevoNodo;
 		}
@@ -57,7 +57,7 @@ void NodoX::Push(NodoX *NuevoNodo)
 		}
 		break;
 	default:
-		fprintf(stderr, "ERROR con la Incercion de Nodos");
+		fprintf(stderr, "ERROR con la Insertacion de Nodos");
 		break;
 	}
 }
@@ -120,29 +120,17 @@ void NodoX::PopAll()
 	se va a borra a si mismo y a todo nodo 
 	Conectado a el */
 
-	if (ptr_Mayor != nullptr) {
-		ptr_Mayor->PopAll();
-		ptr_Mayor = nullptr;
-	}
-
 	if (ptr_Menor != nullptr) {
 		ptr_Menor->PopAll();
 		ptr_Menor = nullptr;
 	}
+
+	if (ptr_Mayor != nullptr) {
+		ptr_Mayor->PopAll();
+		ptr_Mayor = nullptr;
+	}
 	
 	 delete this;
-}
-
-// solo verifica si tiene 2 hijos el nodo 
-// actual 
-bool NodoX::VerificarHijos(NodoX *ptr_nodo)
-{
-	// si tiene 2 hijos entoces regersar true 
-	if(ptr_nodo->ptr_Mayor != nullptr && ptr_nodo->ptr_Menor != nullptr)
-	{
-		return true;
-	}
-	return false;
 }
 
 void NodoX::Pop() {
@@ -197,11 +185,12 @@ void NodoX::Pop() {
 				// hijo del nodo siguente 
 			if(ptr_Ayacientes->ptr_Mayor == ptr_ParaEliminar)
 			{
-				ptr_Ayacientes = ptr_ParaEliminar->ptr_Mayor;
+				// esta en el nodo Mayor 
+				ptr_Ayacientes->ptr_Mayor = ptr_ParaEliminar->ptr_Mayor;
 				ptr_ParaEliminar->ptr_Mayor = nullptr;
 			}
 			else {
-				ptr_Ayacientes = ptr_ParaEliminar->ptr_Mayor;
+				ptr_Ayacientes->ptr_Menor = ptr_ParaEliminar->ptr_Mayor;
 				ptr_ParaEliminar->ptr_Mayor = nullptr;
 			}
 			delete ptr_ParaEliminar;
@@ -217,29 +206,32 @@ void NodoX::Pop() {
 			// hijo del nodo siguente 
 			if (ptr_Ayacientes->ptr_Mayor == ptr_ParaEliminar)
 			{
-				ptr_Ayacientes = ptr_ParaEliminar->ptr_Menor;
+				// esta en el nodo Mayor 
+				ptr_Ayacientes->ptr_Mayor = ptr_ParaEliminar->ptr_Menor;
 				ptr_ParaEliminar->ptr_Menor = nullptr;
 			}
 			else {
-				ptr_Ayacientes = ptr_ParaEliminar->ptr_Menor;
+				// esta en el nodo Menor
+				ptr_Ayacientes->ptr_Menor = ptr_ParaEliminar->ptr_Menor;
 				ptr_ParaEliminar->ptr_Menor = nullptr;
 			}
 			delete ptr_ParaEliminar;
 			ptr_ParaEliminar = nullptr;
-		
 		 }
-		// lo que hacemos cuando el nodo a quitar tien 2 
-		// hijos es , crear 2 punteros temporales a los hijos
-		// borrar el padre luego unsado nodo Padre (del nodo que 
-		// borramos ) usamo la funcion push para desicdir a 
-		// donde van a ir los hijos 
+			/*esta condicion verifica si el nodo a eliminar 
+			tiene 2 hijo */
 	else if (ptr_ParaEliminar->ptr_Mayor != nullptr
 				&& ptr_ParaEliminar->ptr_Menor != nullptr)
 		 {
+			// consiguimos el nodo padre del nodo a que 
+			// vamos a borrar.
 			  ptr_Ayacientes = Camino[Camino.size() - 2];
+			  // creamos nodo temporales para los hijos
 			  NodoX *NodoMayor = ptr_ParaEliminar->ptr_Mayor;
 			  NodoX *NodoMenor = ptr_ParaEliminar->ptr_Menor;
 
+			  /*Averiguamos si el nodo a eliminar es el nodo 
+			  Mayor O Menor del padre */
 			  if(ptr_Ayacientes->ptr_Mayor == ptr_ParaEliminar)
 			  {
 				  ptr_Ayacientes->ptr_Mayor = nullptr;
@@ -247,12 +239,16 @@ void NodoX::Pop() {
 			  else {
 				  ptr_Ayacientes->ptr_Menor = nullptr;
 			  }
+
+			  // quitamos los hijos para re-incertalos al 
+			  // arbol 
 			  ptr_ParaEliminar->ptr_Mayor = nullptr;
 			  ptr_ParaEliminar->ptr_Menor = nullptr;
-			  
+			  // re-incertamos los nodo al arbol 
 			  ptr_Ayacientes->Push(NodoMenor);
 			  ptr_Ayacientes->Push(NodoMayor);
 			  
+			  // borramos el nodo a eliminar
 			  delete ptr_ParaEliminar;
 			  ptr_ParaEliminar = nullptr;
 			  NodoMayor = nullptr;
@@ -289,4 +285,21 @@ NodoX* NodoX::GetMenor()
 
 void NodoX::Print() {
 	this->M_Persona.Print();
+}
+
+
+// funcion recursiva 
+void NodoX::PrintAll()
+{
+	if(this->ptr_Menor != nullptr)
+	{
+		this->ptr_Menor->PrintAll();
+	}
+
+	this->Print();
+
+	if (this->ptr_Mayor != nullptr) {
+		this->ptr_Mayor->PrintAll();
+	}
+
 }
