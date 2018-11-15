@@ -21,7 +21,7 @@ public: // metodos
 	void Push(NodoX * NuevoNodo);
 	bool Seach(const char Buscar[]);
 	void PopAll();
-	void Pop();
+	void Pop(std::string &Remove);
 	void Print();
 	void PrintAll();
 	NodoX* GetMayor();

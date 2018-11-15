@@ -13,7 +13,7 @@ Arbol::~Arbol()
 
 // crear un nuevo nodo 
 // para agregralo 
-void Arbol::Add()
+void Arbol::Add() //TODO remove it
 {
 	if(Raiz != nullptr)
 	{
@@ -39,33 +39,50 @@ void Arbol::Add(NodoX *ptr_NuevoNodo) {
 		Raiz = ptr_NuevoNodo;
 	}
 }
+/*
+TODO not to ask for user input in the tree
+*/
+//void Arbol::Remove() {
+//	if (Raiz != nullptr) {
+//		Raiz->Pop();
+//	}
+//	else {
+//		std::cout << "No Existe nodo para quitar";
+//	}
+//}
 
-void Arbol::Remove() {
+
+void Arbol::Remove(std::string &Remover)
+{
 	if (Raiz != nullptr) {
-		Raiz->Pop();
+		Raiz->Pop(Remover);
 	}
 	else {
 		std::cout << "No Existe nodo para quitar";
 	}
+
 }
 
-bool Arbol::Seach() {
-	std::string ValorDeBusqueda;
-	bool IsEncontrado = false;
 
-	printf("Igresa lo que estas buscando \n aqui -->");
-	std::cin >> ValorDeBusqueda;
-
-	// si encuetra el valor me da verdad si no
-	// me da falso 
-	IsEncontrado = Raiz->Seach(ValorDeBusqueda.c_str());
-
-	return IsEncontrado;
+bool Arbol::Seach(std::string &Buscar)
+{
+	if (Raiz != nullptr) {
+		bool IsEncontrado = false;
+		IsEncontrado = Raiz->Seach(Buscar.c_str());
+		return IsEncontrado;
+	}
+	else {
+		std::cout << "No existe nodo para buscar";
+	}
 }
 
 void Arbol::Print()
 {
+	if(Raiz != nullptr)
 	Raiz->PrintAll();
+	else {
+		std::cout << "No Existe nodo Printair";
+	}
 }
 
 void Arbol::Sort(std::vector<Persona*> &Vec,int bajo, int alto) {
@@ -77,10 +94,6 @@ void Arbol::Sort(std::vector<Persona*> &Vec,int bajo, int alto) {
 		Sort(Vec, pivote + 1, alto);
 	}
 
-}
-
-void Arbol::CopiarVector(std::vector<Persona*> &Vec) {
-	M_Personas = Vec;
 }
 
 
@@ -128,7 +141,7 @@ void Arbol::ConvertirVector(std::vector<Persona*> &Vec, int bajo, int alto)
 		// agregamos el nuevo nodo a la raiz 
 		Add(nuevo_nodo);
 
-		// esto divide el arreglo en suarreglos 
+		// esto divide el arreglo en subarreglos 
 		ConvertirVector(Vec, bajo, Pivote - 1);
 		ConvertirVector(Vec, Pivote + 1, alto);
 

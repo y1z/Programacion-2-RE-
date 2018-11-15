@@ -10,15 +10,14 @@ public:
 
 public://Variables
 	NodoX* Raiz = nullptr;
-	std::vector<Persona*> M_Personas;
 
 public://Metodos 
 	void Add();
 	void Add(NodoX* NuevoNodo);
 	void Remove();
-	bool Seach();
+	void Remove(std::string &Remover);
+	bool Seach(std::string &Buscar);
 	void Print();
-	void CopiarVector(std::vector<Persona*> &Vec);
 	void ConvertirVector(std::vector<Persona*> &Vec, int bajo , int alto);
 
 	void Sort(std::vector<Persona*> &Vec,int bajo, int alto);

@@ -10,3 +10,4 @@ Entidad::Entidad()
 Entidad::~Entidad()
 {
 }
+
