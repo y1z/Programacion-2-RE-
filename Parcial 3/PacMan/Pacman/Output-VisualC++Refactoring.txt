@@ -1,0 +1,133 @@
+﻿
+Renamed 'AlturaDeLaberinto' to 'EscalaHorizontal':
+--------------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(9, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(215, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(220, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(225, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(253, 22)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(269, 25)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(282, 25)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(289, 30)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(298, 2)
+
+Renamed 'EscalaHorizontal' to 'EscalaVertical':
+-----------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(9, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(215, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(220, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(225, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(253, 22)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(269, 25)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(282, 25)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(289, 30)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(298, 2)
+
+Renamed 'AnchuraDeLaberinto' to 'EscalaHerizontal':
+---------------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(10, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(214, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(219, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(224, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(254, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(268, 26)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(281, 26)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(286, 32)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(299, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(346, 4)
+
+Renamed 'EscalaHerizontal' to 'EscalaHorizontal':
+-------------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(10, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(214, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(219, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(224, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(254, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(268, 26)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(281, 26)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(286, 32)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(299, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(346, 4)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(348, 31)
+
+Renamed 'QuitarCaracterNoDesiado' to 'QuitarEspaciosEnBlanco':
+--------------------------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(31, 13)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(204, 13)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(241, 11)
+
+Renamed 'pac_man' to 'Player':
+------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(13, 8)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(87, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(148, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(149, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(151, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(180, 4)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(181, 4)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(182, 34)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(182, 55)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(182, 76)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(184, 8)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(185, 5)
+
+Renamed 'Return' to 'ReturnString':
+-----------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(216, 14)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(220, 4)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(223, 9)
+
+Renamed 'EscalaVertical' to 'AlturaDeLaberinto':
+------------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(11, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(157, 36)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(210, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(210, 52)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(233, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(270, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(287, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(292, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(297, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(325, 22)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(341, 25)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(354, 25)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(361, 30)
+
+Renamed 'EscalaHorizontal' to 'AnchuraDeLaberinto':
+---------------------------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(12, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(157, 19)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(209, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(209, 53)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(234, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(248, 4)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(252, 7)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(256, 31)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(286, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(291, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(296, 24)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(326, 23)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(340, 26)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(353, 26)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(358, 32)
+
+Renamed 'Posicion' to 'Condenadas':
+-----------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Pacman.h(5, 8)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Pacman.h(23, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Pacman.h(25, 2)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Pacman.h(29, 2)
+
+Renamed 'tablero' to 'ptr_tablero':
+-----------------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(16, 9)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(247, 3)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(251, 4)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(254, 3)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(261, 22)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(291, 8)
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Source.cpp(304, 12)
+
+Renamed 'speed' to 'M_speed':
+-----------------------------
+c:\Users\Y. Barraza\Documents\Visual Studio 2017\Programacion 2 re\Programacion-2-RE-\Parcial 2\PacMan\Pacman\Pacman\Entidad.h(23, 8)

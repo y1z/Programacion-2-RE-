@@ -69,11 +69,18 @@ bool Arbol::Seach(std::string &Buscar)
 	if (Raiz != nullptr) {
 		bool IsEncontrado = false;
 		IsEncontrado = Raiz->Seach(Buscar.c_str());
+		if(IsEncontrado == false)
+		{
+			std::cout << "\n el idividuo que esta buscando [" << Buscar << "] no esta en el arbol ";
+		}
+		
 		return IsEncontrado;
 	}
 	else {
 		std::cout << "No existe nodo para buscar";
 	}
+
+
 }
 
 void Arbol::Print()

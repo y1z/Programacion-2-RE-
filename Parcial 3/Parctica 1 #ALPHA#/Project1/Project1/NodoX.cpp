@@ -72,11 +72,11 @@ bool NodoX::Seach(const char Buscar[]) {
 		IsEncontrado = true;
 		return IsEncontrado;
 	}
-	else if (!(this->M_Persona > Buscar) && ptr_Menor != nullptr) {
-		IsEncontrado =  this->ptr_Menor->Seach(Buscar);
+	else if (!(this->M_Persona > Buscar) && ptr_Mayor != nullptr) {
+		IsEncontrado =  this->ptr_Mayor->Seach(Buscar);
 	}
-	else if (this->M_Persona > Buscar && ptr_Mayor != nullptr) {
-		IsEncontrado = this->ptr_Mayor->Seach(Buscar);
+	else if (this->M_Persona > Buscar && ptr_Menor != nullptr) {
+		IsEncontrado = this->ptr_Menor->Seach(Buscar);
 	}
 
 	return IsEncontrado;
