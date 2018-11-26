@@ -5,18 +5,24 @@
 #include "LOG.h"
 #include "Tablero.h"
 #include "Pacman.h"
+#include "Grafo.h"
 
 // usare estos valore para consiguir la escala 
 // de todos los demas objetos 
 short AlturaDeLaberinto = 0;
 short AnchuraDeLaberinto = 0;
 
+float EscalaHorizontal;
+float EscalaVertical;
+
 static PacMan *ptr_Player = new PacMan;
 
 Tablero *ptr_tablero = new Tablero;
 
+// para leer 
 std::fstream file;
-// para marcar errores 
+// para marcar errores o otra informacion del
+// programa
 LOG logger;
 
 const float FPS = 60.0f;
@@ -26,6 +32,20 @@ void DefinirMaze();
 void DibujarLaberiento(ALLEGRO_BITMAP *Bitmap, ALLEGRO_BITMAP *BlackScreen, ALLEGRO_DISPLAY *Display);
 
 std::string QuitarEspaciosEnBlanco(std::string &);
+
+void DFS(Grafo&,Vertice &PuntoEntrada ,Vertice &Destino);
+
+void GetEscala(ALLEGRO_DISPLAY *Display);
+
+// esta funcion no es parte del programa 
+// solo existe cuando debo probra al aprate del 
+// Programa 
+void Test();
+
+void Stop() {
+	std::cin.ignore();
+	std::cin.get();
+}
 
 int main(int args, char** argv)
 {
@@ -51,9 +71,17 @@ int main(int args, char** argv)
 		return -1;
 	}
 
+
+	// para tener acceso a los eventos 
+	// de teclado
 	if(!al_install_keyboard())
 	{
 		fprintf(stderr, "Fracaso de iniciar el teclado ");
+		return -1;
+	}
+
+	if (!al_init_primitives_addon()) {
+		fprintf(stderr, " Primitives Fracaso al Iniciar ");
 		return -1;
 	}
 
@@ -148,6 +176,16 @@ int main(int args, char** argv)
 
 	ptr_Player->ptr_tablero = ptr_tablero;
 
+	Grafo grafo;
+	grafo.GeneralGrafo(ptr_tablero->Laberinto);
+
+	GetEscala(Ventana);
+
+	Vertice tempVert1(0, 0);
+	Vertice tempVert2(3, 3);
+
+	DFS(grafo, tempVert1, tempVert2);
+
 	while (true)
 	{
 		al_wait_for_event(EventoQueue, &OtroEvento);
@@ -219,24 +257,6 @@ int main(int args, char** argv)
 	return 0;
 }
 
-
-// quita las caracteres de ' ', en otras palabras
-// espacio blank space.
-std::string QuitarEspaciosEnBlanco(std::string &string)
-{
-	// sera el string que retornamos 
-	std::string ReturnString;
-	for (int i = 0; i < string.size(); ++i) {
-		// solo quita la caracteres que 
-		// no 
-		if(string[i] != ' ')
-		{
-			ReturnString += string[i];
-		}
-	}
-	return ReturnString;
-}
-
 void DefinirMaze() {
 	// estas dos variable son para saber
 	// las dimenciones de laberinto 
@@ -255,6 +275,7 @@ void DefinirMaze() {
 	do
 	{
 		ptr_tablero->Laberinto.emplace_back();
+
 		std::getline(file, temp);
 		// consiguimos la anchura del laberiento 
 		// la anchura De laberinto deberia ser 
@@ -286,7 +307,6 @@ void DefinirMaze() {
 }
 
 
-
 void DibujarLaberiento(ALLEGRO_BITMAP *Bitmap, ALLEGRO_BITMAP *BlackScreen, ALLEGRO_DISPLAY *Display) {
 	// son para controlar donde va a 
 	//dibujar la imagen 
@@ -303,7 +323,6 @@ void DibujarLaberiento(ALLEGRO_BITMAP *Bitmap, ALLEGRO_BITMAP *BlackScreen, ALLE
 	// en 'x' cantidad 
 	float AnchuraDePantalla = al_get_display_width(Display);
 	float AlturaDePantalla = al_get_display_height(Display);
-
 
 	// Dibujo el laberiento
 	for (int i = 0; i < AlturaDeLaberinto; ++i) {
@@ -347,3 +366,236 @@ void DibujarLaberiento(ALLEGRO_BITMAP *Bitmap, ALLEGRO_BITMAP *BlackScreen, ALLE
 
 }
 
+// quita las caracteres de ' ', en otras palabras
+// espacio en blanco.
+std::string QuitarEspaciosEnBlanco(std::string &string)
+{
+	// sera el string que retornamos 
+	std::string ReturnString;
+	for (int i = 0; i < string.size(); ++i) {
+		// solo quita la caracteres que 
+		// no deseamos para el laberiento 
+		if (string[i] != ' ')
+		{
+			ReturnString += string[i];
+		}
+	}
+	return ReturnString;
+}
+
+void DFS(Grafo &grafo,Vertice &PuntoEntrada, Vertice &Destino) {
+
+	// Estos dos vectores contiene la posicion actual (first) y 
+	// de donde viene (second)
+
+	// a donde podemos ir
+	std::vector<std::pair<Vertice,Vertice>> Abiertos;
+	// donde estabamos antes
+	std::vector<std::pair<Vertice, Vertice>> Cerrados;
+
+	// para saber en donde estamos 
+	Vertice PosicionActual;
+	// para saber de donde venimos 
+	Vertice PosicionPrevia;
+	
+	// hacemos la pregunta : ? los vertices que me 
+	// provee realmente exiten dentro del grafo?
+	bool EsPuntoEntradaValido = false;
+	bool EsDestinoValido = false;
+
+	/* hacemos la pregunta : ? Encontramos el 
+	 la posicion que nos pide el usario ?*/
+	bool EsTerminado = false;
+
+	bool EsPrimeraIteracion = true;
+
+	for(Vertice vert : grafo.M_Vertices)
+	{
+		if (vert == PuntoEntrada) {
+			EsPuntoEntradaValido = true;
+		}
+		else if (vert == Destino) {
+			EsDestinoValido = true;
+		}
+	}
+
+	Abiertos.resize(1);
+
+	if (EsDestinoValido && EsPuntoEntradaValido) {
+		// iniciamos tomando el punto de Entrada 
+		// como posicion inicial 
+		Abiertos[0].first = PuntoEntrada;
+		Abiertos[0].second = PuntoEntrada;
+		PosicionActual = PuntoEntrada;
+
+		while (!EsTerminado)
+		{
+
+			// revisar si terminamos 
+			(PosicionActual == Destino) ? EsTerminado = true : 0;
+
+
+			// Un vertice solo puede tener 4 arista maximo (en nuestro grafo) 
+			std::array<Arista, 4> AristaPosiciones;
+			/* Hacemos la pregunta ? deberia usar 
+			 esta arista ? */
+			std::array<bool, 4> AristaValidos;
+			// primero todo son falsos
+			AristaValidos.fill(false);
+			std::array<bool, 4>::iterator BIterador;
+
+			BIterador = AristaValidos.begin();
+
+			auto AristasIterador = AristaPosiciones.begin();
+		
+			// Buscamos las adyaciencias de nuestra posicion 
+
+			for(Vertice Posicion : grafo.M_Vertices)
+			{
+				if (grafo.EsAdyaciente(PosicionActual, Posicion))
+				{
+					bool EsDuplica = false;
+					/* Esta Copia exite dado que sin ella
+						El Vertice Original 'Posicion' se modifica 
+						por alguna razon. 
+					*/
+					Vertice Copia = Posicion;
+					// este 'if' exite para que no tengan aristas 
+					// duplicados 
+					for(Arista arista : AristaPosiciones)
+					{
+						if (arista.ptr_Vert2 == &Copia)
+						{
+							EsDuplica = true;
+						}
+					}
+					// hacemos la siguentes operciones cuando 
+					// NO tenemos una arista duplicada
+					if(!EsDuplica)
+					{
+						AristasIterador->setVertices(PosicionActual, Copia);
+						AristasIterador++;
+						*BIterador = true;
+						BIterador;
+					}
+				}
+			}
+
+			AristasIterador = AristaPosiciones.begin();
+
+			BIterador = AristaValidos.begin();
+
+			// revisar Cada vertice 
+			for(AristasIterador; AristasIterador != AristaPosiciones.end(); AristasIterador++)
+			{
+				for (int i = 0; i < Cerrados.size(); ++i) 
+				{
+					// nos aseguramos que el Vertice vecino no este en cerrados 
+					if(AristasIterador->ptr_Vert2 == &Cerrados[i].first)
+					{
+						*BIterador = false;
+					}
+				}
+				BIterador++;
+			}
+
+			BIterador = AristaValidos.end();
+			AristasIterador = AristaPosiciones.begin();
+
+			for(bool EsValido : AristaValidos)
+			{
+				if(EsValido)
+				{
+					Abiertos.emplace_back(std::make_pair(*AristasIterador->ptr_Vert2, *AristasIterador->ptr_Vert1));
+				}
+				AristasIterador++;
+			}
+
+			AristasIterador = AristaPosiciones.begin();
+
+			if(EsPrimeraIteracion)
+			{
+				Cerrados.emplace_back(std::make_pair(PosicionActual, PosicionActual));
+				Abiertos.erase(Abiertos.begin() + 0);
+				PosicionPrevia = PosicionActual;
+				PosicionActual = Abiertos[Abiertos.size() - 1].first;
+				EsPrimeraIteracion = false;
+			}
+			else {
+				//Cerrados.emplace_back(std::make_pair(PosicionPrevia,PosicionActual));
+				// buscamos las posiciones para que ya vistamos 
+				// para quitarlas de abiertos 
+
+				PosicionPrevia = PosicionActual;
+				PosicionActual = Abiertos[Abiertos.size() - 1].first;
+
+				for(int i = 0; i < Abiertos.size();i++)
+				{
+					if (PosicionActual == Abiertos[i].first && PosicionPrevia == Abiertos[i].second)
+					{
+						Cerrados.emplace_back(PosicionActual, PosicionPrevia);
+						Abiertos.erase(Abiertos.begin() + i);
+						break;
+					}
+				}
+
+			}
+		}
+	}
+	if (EsTerminado) {
+		std::cout << "Done";
+
+		for( int i = 0 ; i < Cerrados.size(); ++i)
+		{
+			al_draw_line(Cerrados[i].second.M_x * EscalaHorizontal
+				, Cerrados[i].first.M_y * EscalaVertical
+				, Cerrados[i].first.M_x * EscalaHorizontal
+				, Cerrados[i].second.M_y * EscalaVertical
+				, al_map_rgb(255, 255, 255)
+				, EscalaVertical / AlturaDeLaberinto
+			);
+			al_flip_display();
+			al_rest(0.5);
+		}
+	}
+	else {
+		fprintf(stderr, "La Posicion es Ivalida ");
+	}
+}
+
+
+void Test()
+{
+	/*Arista temp;
+
+	Vertice ver1(2, 2);
+	Vertice ver2(6, 6);
+
+	temp.ptr_Vert1 = &ver1;
+	temp.ptr_Vert2 = &ver2;
+
+	std::array<Arista, 4> Adyaciencias;
+	std::array<Arista, 4>::iterator Iterador;
+	Iterador = Adyaciencias.begin();
+
+	for (char i = 0; i < 2; i++)
+	{
+		*Iterador = temp;
+		Iterador++;
+	}*/
+
+	Stop();
+}
+
+
+void GetEscala(ALLEGRO_DISPLAY *Display) 
+{
+	int anchura = al_get_display_width(Display);
+	int altura = al_get_display_height(Display);
+
+	EscalaHorizontal = 1;
+	EscalaVertical = 1;
+
+	EscalaVertical = altura/AlturaDeLaberinto ;
+	EscalaHorizontal = anchura/AnchuraDeLaberinto ;
+}
