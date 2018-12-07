@@ -2,12 +2,7 @@
 #include "stdafx.h"
 #include "Entidad.h"
 #include "Tablero.h"
-
-struct Coordenadas
-{
-	short x;
-	short y;
-};
+#include "Structs.h"
 
 
 class PacMan :public Entidad
@@ -21,7 +16,7 @@ public ://variables
 	// para saber donde esta en la matriz 
 	Coordenadas M_MapCoordenadas;
 	// saber donde esta en el mapa 
-	Coordenadas M_LimiteDeMapa;
+	Coordenadas M_Limite;
 
 	Tablero *ptr_tablero = nullptr;
 

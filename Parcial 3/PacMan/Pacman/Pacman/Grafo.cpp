@@ -18,7 +18,7 @@ void Grafo::GeneralGrafo(std::vector<std::vector<char>>& OtherMapa)
 	{
 		for (int j = 0; j < OtherMapa[i].size(); j++)
 		{
-			if(OtherMapa[i][j] == '0')
+			if(OtherMapa[i][j] != '1')
 			{
 				M_Vertices.emplace_back(Vertice(j, i));
 			}
@@ -44,7 +44,7 @@ void Grafo::EnlasarGrafo()
 			{
 				// queremos asegurar que no exita arista que son 
 				// copias de otros aristas 
-				if(!(EsConnecionExistente(M_Vertices[i],M_Vertices[j])))
+				if (!(EsConnecionExistente(M_Vertices[i], M_Vertices[j])))
 				{
 					// revisar ei se pueden enlasar 
 					if (EsAdyaciente(M_Vertices[i], M_Vertices[j]))
@@ -55,7 +55,6 @@ void Grafo::EnlasarGrafo()
 			}
 		}
 	}
-
 }
 
 
@@ -68,7 +67,7 @@ bool Grafo::EsAdyaciente(Vertice& Orignal, Vertice& Compara) {
 		return true;
 	}
 	// verifica si lo vertices estan ensiguida uno del otro 
-	// en el eje X 
+	// en el eje y 
 	else if (Orignal.M_x == Compara.M_x && (Compara.M_y == Orignal.M_y - 1 || Compara.M_y == Orignal.M_y + 1))
 	{
 		return true;

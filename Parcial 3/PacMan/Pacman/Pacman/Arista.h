@@ -1,5 +1,5 @@
 #pragma once
-
+#include"Vertice.h"
 class Vertice;
 
 class Arista
@@ -14,9 +14,8 @@ public:// Variables
 
 public:// metodos 
 	void setVertices(Vertice&, Vertice&);
-//	Vertice* getVertice();
+	bool Comparar(Vertice*, Vertice&);
 public: 
 	bool operator==(Vertice&);
-	bool operator==(Vertice);
 };
 
